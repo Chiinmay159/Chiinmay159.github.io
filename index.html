@@ -4,23 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinmay’s GitHub Page</title>
+
+  <!-- 🔍 SEO Meta -->
+  <meta name="description" content="Personal GitHub Page of Chinmay showcasing creative projects, ideas, and digital experiments.">
+  <meta name="author" content="Chinmay Madhav Bhandari">
+  <meta name="keywords" content="Chinmay, GitHub, portfolio, projects, digital, BharatVidya, Matra Media">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
       background-color: #fafafa;
-      margin-top: 50px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
     }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2rem;
+      color: #222;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    figure {
+      max-width: 90%;
+      margin: 40px auto;
+    }
+
     img {
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
   <h1>Hello from Chinmay 👋</h1>
   <p>This is my first GitHub Page.</p>
-  <img src="Maroon Circle Political Logo (1).png" alt="My Logo">
+
+  <figure>
+    <img src="logo.png" alt="Maroon Circle Political Logo by Chinmay">
+    <figcaption>Maroon Circle Political Logo — designed by Chinmay, symbolizing creative balance and unity.</figcaption>
+  </figure>
 </body>
 </html>
