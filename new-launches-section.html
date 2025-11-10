@@ -9,11 +9,12 @@
             --badge-color: #e55353;
             --text-primary: #2c3e50;
             --text-secondary: #5a6c7d;
-            --background-white: #ffffff;
-            --border-color: #e8ecef;
-            --shadow-sm: 0 2px 8px rgba(0, 66, 72, 0.06);
-            --shadow-md: 0 8px 24px rgba(0, 66, 72, 0.12);
-            --shadow-lg: 0 16px 48px rgba(0, 66, 72, 0.16);
+            --card-background: #fafaf8;
+            --border-color: #e5e3df;
+            --paper-edge: #d8d6d2;
+            --shadow-paper-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.08);
+            --shadow-paper-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-paper-lg: 0 10px 20px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.06);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -40,24 +41,41 @@
             margin-bottom: clamp(2rem, 4vw, 3rem);
         }
 
-        /* Course Card */
+        /* Course Card - Matte Paper Finish */
         #bharatvidya-course-launches .course-card {
-            background-color: var(--background-white);
+            background-color: var(--card-background);
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: transform var(--transition-base), box-shadow var(--transition-base);
+            box-shadow: var(--shadow-paper-sm);
+            transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
             display: flex;
             flex-direction: column;
             position: relative;
             height: 100%;
-            border: 1px solid transparent;
+            border: 1px solid var(--border-color);
+            /* Subtle paper texture effect */
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.01) 2px, rgba(0,0,0,0.01) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.01) 2px, rgba(0,0,0,0.01) 4px);
+        }
+
+        #bharatvidya-course-launches .course-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: inset 0 -1px 0 var(--paper-edge);
+            pointer-events: none;
+            opacity: 0.5;
         }
 
         #bharatvidya-course-launches .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--border-color);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-paper-lg);
+            border-color: var(--paper-edge);
         }
 
         /* Image Container */
@@ -69,38 +87,27 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #e8ecef 100%);
         }
 
-        #bharatvidya-course-launches .image-wrap::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 66, 72, 0.03) 100%);
-            opacity: 0;
-            transition: opacity var(--transition-base);
-        }
-
-        #bharatvidya-course-launches .course-card:hover .image-wrap::after {
-            opacity: 1;
-        }
-
         #bharatvidya-course-launches .image-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform var(--transition-base);
+            object-position: center center;
+            transition: transform var(--transition-base), opacity var(--transition-base);
             will-change: transform;
+            display: block;
         }
 
         #bharatvidya-course-launches .course-card:hover .image-wrap img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
-        /* New Badge */
+        /* New Badge - Matte Finish */
         #bharatvidya-course-launches .new-badge {
             position: absolute;
             top: 1rem;
             left: 0;
             background-color: var(--badge-color);
-            color: var(--background-white);
+            color: #ffffff;
             padding: 0.4rem 1rem;
             font-size: 0.75rem;
             font-weight: 700;
@@ -108,7 +115,7 @@
             text-transform: uppercase;
             border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
             z-index: 10;
-            box-shadow: 0 2px 8px rgba(229, 83, 83, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
         }
 
         /* Card Content */
@@ -166,14 +173,14 @@
             color: var(--accent-color);
         }
 
-        /* View Course Button */
+        /* View Course Button - Matte Finish */
         #bharatvidya-course-launches .view-course-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             background-color: var(--accent-color);
-            color: var(--background-white);
+            color: #ffffff;
             padding: 0.875rem 1.25rem;
             border-radius: var(--radius-sm);
             text-decoration: none;
@@ -183,30 +190,18 @@
             margin-top: 1rem;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        #bharatvidya-course-launches .view-course-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity var(--transition-fast);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
         }
 
         #bharatvidya-course-launches .view-course-btn:hover {
             background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(154, 106, 40, 0.3);
-        }
-
-        #bharatvidya-course-launches .view-course-btn:hover::before {
-            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
         }
 
         #bharatvidya-course-launches .view-course-btn:active {
             transform: translateY(0);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
         }
 
         /* See All Courses Button */
@@ -220,7 +215,7 @@
             align-items: center;
             gap: 0.625rem;
             background-color: var(--accent-color);
-            color: var(--background-white);
+            color: #ffffff;
             padding: 1rem 2rem;
             border-radius: var(--radius-sm);
             text-decoration: none;
@@ -228,32 +223,19 @@
             font-size: 1rem;
             letter-spacing: 0.01em;
             transition: all var(--transition-fast);
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
             position: relative;
-            overflow: hidden;
-        }
-
-        #bharatvidya-course-launches .all-courses-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity var(--transition-fast);
         }
 
         #bharatvidya-course-launches .all-courses-btn:hover {
             background-color: var(--accent-hover);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        #bharatvidya-course-launches .all-courses-btn:hover::before {
-            opacity: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         #bharatvidya-course-launches .all-courses-btn:active {
             transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
         }
 
         #bharatvidya-course-launches .icon-arrow {
@@ -280,7 +262,7 @@
 
         @media (max-width: 480px) {
             #bharatvidya-course-launches .course-card:hover {
-                transform: translateY(-4px);
+                transform: translateY(-3px);
             }
 
             #bharatvidya-course-launches .image-wrap {
@@ -302,7 +284,7 @@
             #bharatvidya-course-launches .course-card {
                 break-inside: avoid;
                 box-shadow: none;
-                border: 1px solid var(--border-color);
+                border: 1px solid var(--paper-edge);
             }
         }
     </style>
