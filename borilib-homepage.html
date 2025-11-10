@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoriLib - Digital Heritage Reimagined | Bhandarkar Oriental Research Institute</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="BoriLib: Access 125,000+ books and 28,000+ manuscripts from the Bhandarkar Oriental Research Institute. Explore Sanskrit, Prakrit, and rare Eastern knowledge traditions.">
+  <meta name="keywords" content="BoriLib, BORI, digital library, Sanskrit manuscripts, Prakrit texts, Indian heritage, ancient manuscripts, research institute, Pune">
+  <meta name="author" content="Bhandarkar Oriental Research Institute">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BoriLib - Digital Heritage Reimagined">
+  <meta property="og:description" content="Explore 125,000+ books and 28,000+ manuscripts from BORI">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://borilib.com">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="borilib-styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+
+  <!-- Skip to Content (Accessibility) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Progress Indicator -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="/" aria-label="BoriLib home">
+          <span class="logo-text">BoriLib</span>
+        </a>
+      </div>
+
+      <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="navbar-menu">
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#about">About BORI</a></li>
+        <li><a href="#researchers">For Researchers</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#help">Help</a></li>
+      </ul>
+
+      <div class="navbar-actions">
+        <button class="btn-icon search-toggle" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+
+        <div class="language-selector">
+          <button class="btn-language" aria-label="Select language" aria-haspopup="true">
+            🌐 EN <span class="dropdown-arrow">▾</span>
+          </button>
+          <ul class="language-dropdown" role="menu">
+            <li role="menuitem"><a href="#" lang="en">English</a></li>
+            <li role="menuitem"><a href="#" lang="hi">हिंदी (Hindi)</a></li>
+            <li role="menuitem"><a href="#" lang="mr">मराठी (Marathi)</a></li>
+            <li role="menuitem"><a href="#" lang="ta">தமிழ் (Tamil)</a></li>
+            <li role="menuitem"><a href="#" lang="sa">संस्कृतम् (Sanskrit)</a></li>
+          </ul>
+        </div>
+
+        <a href="#login" class="btn-primary">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" role="banner">
+    <div class="hero-background">
+      <div class="parallax-layer layer-1"></div>
+      <div class="parallax-layer layer-2"></div>
+      <div class="parallax-layer layer-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-title fade-up">
+        <span class="brand-name">BoriLib</span>
+        <span class="brand-tagline">Digital Heritage Reimagined</span>
+      </h1>
+
+      <p class="hero-subtitle fade-up delay-1">
+        125,000+ Books · 28,000+ Manuscripts<br>
+        Explore the East's Knowledge Traditions
+      </p>
+
+      <div class="hero-cta fade-up delay-2">
+        <a href="#search" class="btn-hero-primary">
+          Start Exploring →
+        </a>
+        <a href="#about" class="btn-hero-secondary">
+          Learn About BORI
+        </a>
+      </div>
+
+      <div class="scroll-indicator fade-up delay-3">
+        <span>Scroll to discover</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M19 12l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Search & Discover Module -->
+    <section class="search-module" id="search">
+      <div class="container">
+        <h2 class="section-title">Discover Knowledge Across Centuries</h2>
+
+        <div class="search-container">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input
+              type="search"
+              class="search-input"
+              placeholder="Search manuscripts, books, languages, authors…"
+              aria-label="Search the collection"
+              autocomplete="off"
+            >
+            <button class="btn-icon voice-search" aria-label="Voice search">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="quick-filters">
+            <button class="filter-btn" data-filter="language">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014 5.07a17.3 17.3 0 013.62 7.88l-4.75-.08z"></path>
+                <path d="M12 8L9 2 6 8M2.5 8h19"></path>
+              </svg>
+              Language <span class="dropdown-arrow">▾</span>
+            </button>
+
+            <button class="filter-btn" data-filter="script">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 7V4h16v3M9 20h6M12 4v16"></path>
+              </svg>
+              Script <span class="dropdown-arrow">▾</span>
+            </button>
+
+            <button class="filter-btn" data-filter="period">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Period <span class="dropdown-arrow">▾</span>
+            </button>
+
+            <button class="filter-btn" data-filter="region">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"></path>
+              </svg>
+              Region <span class="dropdown-arrow">▾</span>
+            </button>
+
+            <button class="filter-btn" data-filter="access">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              Access <span class="dropdown-arrow">▾</span>
+            </button>
+          </div>
+
+          <button class="advanced-search-toggle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path>
+            </svg>
+            Advanced Search Options
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Works Carousel -->
+    <section class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Treasures from the Vault</h2>
+          <p class="section-subtitle">Explore our most significant manuscripts and rare editions</p>
+        </div>
+
+        <div class="carousel-container">
+          <button class="carousel-nav prev" aria-label="Previous items">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+          </button>
+
+          <div class="carousel-track">
+            <!-- Item 1 -->
+            <article class="carousel-item">
+              <div class="item-thumbnail">
+                <img src="https://via.placeholder.com/300x400/2C3E7A/F5EFE0?text=Mahābhārata" alt="Mahābhārata manuscript">
+                <span class="badge badge-open">Open Access</span>
+              </div>
+              <div class="item-content">
+                <h3 class="item-title">Mahābhārata: Critical Edition</h3>
+                <p class="item-meta">Sharada Script · 12th Century</p>
+                <p class="item-meta">Sanskrit · Epic Literature</p>
+                <a href="#" class="btn-view-item">View in Reader →</a>
+              </div>
+            </article>
+
+            <!-- Item 2 -->
+            <article class="carousel-item">
+              <div class="item-thumbnail">
+                <img src="https://via.placeholder.com/300x400/2C3E7A/F5EFE0?text=Arthaśāstra" alt="Arthaśāstra manuscript">
+                <span class="badge badge-preview">Free Preview</span>
+              </div>
+              <div class="item-content">
+                <h3 class="item-title">Arthaśāstra Manuscript</h3>
+                <p class="item-meta">Devanagari Script · 15th Century</p>
+                <p class="item-meta">Sanskrit · Political Science</p>
+                <a href="#" class="btn-view-item">View in Reader →</a>
+              </div>
+            </article>
+
+            <!-- Item 3 -->
+            <article class="carousel-item">
+              <div class="item-thumbnail">
+                <img src="https://via.placeholder.com/300x400/2C3E7A/F5EFE0?text=Rigveda" alt="Rigveda manuscript">
+                <span class="badge badge-subscription">Subscription</span>
+              </div>
+              <div class="item-content">
+                <h3 class="item-title">Ṛgveda Saṃhitā</h3>
+                <p class="item-meta">Grantha Script · 17th Century</p>
+                <p class="item-meta">Sanskrit · Vedic Literature</p>
+                <a href="#" class="btn-view-item">View in Reader →</a>
+              </div>
+            </article>
+
+            <!-- Item 4 -->
+            <article class="carousel-item">
+              <div class="item-thumbnail">
+                <img src="https://via.placeholder.com/300x400/2C3E7A/F5EFE0?text=Prakrit+Grammar" alt="Prakrit grammar manuscript">
+                <span class="badge badge-open">Open Access</span>
+              </div>
+              <div class="item-content">
+                <h3 class="item-title">Prākṛtaprakāśa</h3>
+                <p class="item-meta">Modi Script · 18th Century</p>
+                <p class="item-meta">Prakrit · Grammar</p>
+                <a href="#" class="btn-view-item">View in Reader →</a>
+              </div>
+            </article>
+
+            <!-- Item 5 -->
+            <article class="carousel-item">
+              <div class="item-thumbnail">
+                <img src="https://via.placeholder.com/300x400/2C3E7A/F5EFE0?text=Buddhist+Tantric" alt="Buddhist tantric texts">
+                <span class="badge badge-preview">Free Preview</span>
+              </div>
+              <div class="item-content">
+                <h3 class="item-title">Buddhist Tantric Texts</h3>
+                <p class="item-meta">Tibetan Script · 14th Century</p>
+                <p class="item-meta">Tibetan · Buddhist Studies</p>
+                <a href="#" class="btn-view-item">View in Reader →</a>
+              </div>
+            </article>
+          </div>
+
+          <button class="carousel-nav next" aria-label="Next items">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots">
+          <button class="dot active" aria-label="Go to slide 1"></button>
+          <button class="dot" aria-label="Go to slide 2"></button>
+          <button class="dot" aria-label="Go to slide 3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Institutional Credibility -->
+    <section class="credibility-section">
+      <div class="container">
+        <div class="section-header center">
+          <h2 class="section-title light">A Century of Preserving India's Intellectual Heritage</h2>
+          <p class="section-subtitle light">The Bhandarkar Oriental Research Institute has been at the forefront of manuscript preservation and research since 1917.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="1917">1917</div>
+            <div class="stat-label">Founded</div>
+            <div class="stat-sublabel">Pune, India</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="125000">125,000+</div>
+            <div class="stat-label">Books Digitized</div>
+            <div class="stat-sublabel">& Growing</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="28000">28,000+</div>
+            <div class="stat-label">Manuscripts</div>
+            <div class="stat-sublabel">Rare & Ancient</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="50">50+</div>
+            <div class="stat-label">Scripts & Languages</div>
+            <div class="stat-sublabel">Multilingual</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="stat-number" data-target="5000000">5M+</div>
+            <div class="stat-label">Global Scholars</div>
+            <div class="stat-sublabel">Researchers</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <div class="stat-number">UNESCO</div>
+            <div class="stat-label">Recognition</div>
+            <div class="stat-sublabel">Heritage Status</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore by Category -->
+    <section class="category-section">
+      <div class="container">
+        <div class="section-header center">
+          <h2 class="section-title">Explore by Tradition</h2>
+          <p class="section-subtitle">Navigate our collections by language, script, and cultural tradition</p>
+        </div>
+
+        <div class="category-grid">
+          <a href="#" class="category-card">
+            <div class="category-image" style="background: linear-gradient(135deg, rgba(44,62,122,0.8), rgba(0,180,216,0.6)), url('https://via.placeholder.com/280x320/2C3E7A/F5EFE0?text=Sanskrit') center/cover;">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Sanskrit Manuscripts</h3>
+              <p class="category-count">12,500+ items →</p>
+            </div>
+          </a>
+
+          <a href="#" class="category-card">
+            <div class="category-image" style="background: linear-gradient(135deg, rgba(44,62,122,0.8), rgba(0,180,216,0.6)), url('https://via.placeholder.com/280x320/2C3E7A/F5EFE0?text=Prakrit') center/cover;">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Prakrit Texts</h3>
+              <p class="category-count">5,200+ items →</p>
+            </div>
+          </a>
+
+          <a href="#" class="category-card">
+            <div class="category-image" style="background: linear-gradient(135deg, rgba(44,62,122,0.8), rgba(0,180,216,0.6)), url('https://via.placeholder.com/280x320/2C3E7A/F5EFE0?text=Regional') center/cover;">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Regional Indian Languages</h3>
+              <p class="category-count">8,300+ items →</p>
+            </div>
+          </a>
+
+          <a href="#" class="category-card">
+            <div class="category-image" style="background: linear-gradient(135deg, rgba(44,62,122,0.8), rgba(0,180,216,0.6)), url('https://via.placeholder.com/280x320/2C3E7A/F5EFE0?text=European') center/cover;">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">European Language Editions</h3>
+              <p class="category-count">4,800+ items →</p>
+            </div>
+          </a>
+
+          <a href="#" class="category-card">
+            <div class="category-image" style="background: linear-gradient(135deg, rgba(44,62,122,0.8), rgba(0,180,216,0.6)), url('https://via.placeholder.com/280x320/2C3E7A/F5EFE0?text=Vedic') center/cover;">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Vedic Literature</h3>
+              <p class="category-count">3,200+ items →</p>
+            </div>
+          </a>
+
+          <a href="#" class="category-card">
+            <div class="category-image" style="background: linear-gradient(135deg, rgba(44,62,122,0.8), rgba(0,180,216,0.6)), url('https://via.placeholder.com/280x320/2C3E7A/F5EFE0?text=Buddhist') center/cover;">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Buddhist Texts</h3>
+              <p class="category-count">2,900+ items →</p>
+            </div>
+          </a>
+
+          <a href="#" class="category-card">
+            <div class="category-image" style="background: linear-gradient(135deg, rgba(44,62,122,0.8), rgba(0,180,216,0.6)), url('https://via.placeholder.com/280x320/2C3E7A/F5EFE0?text=Jain') center/cover;">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Jain Literature</h3>
+              <p class="category-count">1,800+ items →</p>
+            </div>
+          </a>
+
+          <a href="#" class="category-card">
+            <div class="category-image" style="background: linear-gradient(135deg, rgba(44,62,122,0.8), rgba(0,180,216,0.6)), url('https://via.placeholder.com/280x320/2C3E7A/F5EFE0?text=Persian') center/cover;">
+            </div>
+            <div class="category-content">
+              <h3 class="category-title">Persian & Arabic Works</h3>
+              <p class="category-count">1,500+ items →</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Researcher Community -->
+    <section class="community-section">
+      <div class="container">
+        <div class="section-header center">
+          <h2 class="section-title">Trusted by Scholars Worldwide</h2>
+          <p class="section-subtitle">Join researchers from 85+ countries accessing BORI's collections</p>
+        </div>
+
+        <div class="community-grid">
+          <div class="testimonials">
+            <div class="testimonial-card active">
+              <div class="quote-icon">"</div>
+              <blockquote class="testimonial-text">
+                BoriLib has revolutionized my research on medieval Sanskrit poetry. Access from Cambridge is seamless and instant. The advanced search capabilities are unmatched.
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <div class="author-name">Dr. Sarah Mitchell</div>
+                  <div class="author-title">Cambridge University</div>
+                  <div class="author-field">Sanskrit Studies</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-nav">
+              <button class="testimonial-prev" aria-label="Previous testimonial">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M15 18l-6-6 6-6"></path>
+                </svg>
+              </button>
+              <button class="testimonial-next" aria-label="Next testimonial">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="globe-visual">
+            <div class="globe-placeholder">
+              <svg width="100%" height="100%" viewBox="0 0 400 400">
+                <circle cx="200" cy="200" r="150" fill="#2C3E7A" opacity="0.1" stroke="#B87333" stroke-width="2"/>
+                <circle cx="200" cy="200" r="5" fill="#00B4D8"/>
+                <text x="200" y="215" text-anchor="middle" fill="#2C3E7A" font-size="12" font-weight="600">Pune, India (HQ)</text>
+
+                <!-- Connection lines -->
+                <line x1="200" y1="200" x2="120" y2="120" stroke="#00B4D8" stroke-width="1" opacity="0.5"/>
+                <line x1="200" y1="200" x2="280" y2="100" stroke="#00B4D8" stroke-width="1" opacity="0.5"/>
+                <line x1="200" y1="200" x2="300" y2="220" stroke="#00B4D8" stroke-width="1" opacity="0.5"/>
+                <line x1="200" y1="200" x2="100" y2="280" stroke="#00B4D8" stroke-width="1" opacity="0.5"/>
+
+                <!-- Global markers -->
+                <circle cx="120" cy="120" r="4" fill="#90C695"/>
+                <circle cx="280" cy="100" r="4" fill="#90C695"/>
+                <circle cx="300" cy="220" r="4" fill="#90C695"/>
+                <circle cx="100" cy="280" r="4" fill="#90C695"/>
+
+                <text x="200" y="380" text-anchor="middle" fill="#757575" font-size="14">500+ Institutions Worldwide</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h3 class="cta-title">Join 5,000+ Researchers</h3>
+          <div class="cta-buttons">
+            <a href="#register" class="btn-primary large">Create Free Account</a>
+            <a href="#institutional" class="btn-secondary large">Institutional Access →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="news-section">
+      <div class="container">
+        <div class="section-header center">
+          <h2 class="section-title">What's New at BoriLib</h2>
+          <p class="section-subtitle">Stay updated with the latest additions and platform improvements</p>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <span class="badge badge-new">NEW</span>
+            <h3 class="news-title">Newly Digitized<br>September 2024</h3>
+            <p class="news-description">
+              250+ rare manuscripts from the Peshwa era now available for researchers worldwide.
+            </p>
+            <a href="#" class="news-link">View Collection →</a>
+            <div class="news-date">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Oct 15, 2024
+            </div>
+          </article>
+
+          <article class="news-card">
+            <span class="badge badge-update">UPDATE</span>
+            <h3 class="news-title">Platform Upgrade<br>Version 2.1 Live</h3>
+            <p class="news-description">
+              AI-powered semantic search, improved script rendering, and enhanced mobile experience.
+            </p>
+            <a href="#" class="news-link">Learn More →</a>
+            <div class="news-date">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Sept 28, 2024
+            </div>
+          </article>
+
+          <article class="news-card">
+            <span class="badge badge-event">EVENT</span>
+            <h3 class="news-title">Webinar Series<br>Using BoriLib</h3>
+            <p class="news-description">
+              Monthly sessions for researchers. Next: Advanced Search Tips for Manuscript Discovery.
+            </p>
+            <a href="#" class="news-link">Register →</a>
+            <div class="news-date">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Nov 20, 2024
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">BoriLib</div>
+          <p class="footer-tagline">Bhandarkar Oriental Research Institute</p>
+          <p class="footer-motto">Preserving the Past, Empowering the Future</p>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h4 class="footer-heading">Collections</h4>
+          <ul class="footer-links">
+            <li><a href="#sanskrit">Sanskrit Manuscripts</a></li>
+            <li><a href="#prakrit">Prakrit Texts</a></li>
+            <li><a href="#regional">Regional Languages</a></li>
+            <li><a href="#european">European Editions</a></li>
+            <li><a href="#vedic">Vedic Literature</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-heading">About</h4>
+          <ul class="footer-links">
+            <li><a href="#about-bori">About BORI</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#partners">Partners</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-heading">Support</h4>
+          <ul class="footer-links">
+            <li><a href="#help">Help Center</a></li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-heading">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#cookies">Cookie Policy</a></li>
+            <li><a href="#licensing">Licensing</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h4 class="footer-heading">Contact</h4>
+        <address class="contact-info">
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="10" r="3"></circle>
+              <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"></path>
+            </svg>
+            Law College Road, Pune 411 004, Maharashtra, India
+          </p>
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            +91-20-2565-9111
+          </p>
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            contact@borilib.com
+          </p>
+        </address>
+      </div>
+
+      <div class="footer-subscription">
+        <h4 class="footer-heading">Subscription Pricing</h4>
+        <div class="pricing-quick">
+          <span class="price-item">Individual: ₹999/yr</span>
+          <span class="price-item">Student: ₹499/yr</span>
+          <span class="price-item">Institution: Contact</span>
+          <span class="price-item">Free Preview Available</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-language">
+          <span>Language:</span>
+          <button class="language-btn active">English</button>
+          <button class="language-btn">हिंदी</button>
+          <button class="language-btn">मराठी</button>
+          <button class="language-btn">தமிழ்</button>
+        </div>
+
+        <div class="footer-social">
+          <span>Follow Us:</span>
+          <a href="#twitter" aria-label="Follow us on X (Twitter)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#linkedin" aria-label="Follow us on LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="#facebook" aria-label="Follow us on Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="#youtube" aria-label="Subscribe on YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <p>&copy; 2024 Bhandarkar Oriental Research Institute. All rights reserved.</p>
+        <p>Jurisdiction: India | Governed by Pune District Court</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Loading Spinner (for later use) -->
+  <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+    <svg class="mandala-spinner" width="64" height="64" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="28" fill="none" stroke="#B87333" stroke-width="2" stroke-dasharray="50 100" transform="rotate(-90 32 32)">
+        <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="32" cy="32" r="20" fill="none" stroke="#00B4D8" stroke-width="2" stroke-dasharray="30 100" transform="rotate(-90 32 32)">
+        <animateTransform attributeName="transform" type="rotate" from="360 32 32" to="0 32 32" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="borilib-scripts.js"></script>
+
+</body>
+</html>
