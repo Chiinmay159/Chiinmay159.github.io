@@ -235,13 +235,13 @@
         }
 
         /* ========================================
-           STATS SECTION - SOCIAL PROOF
+           STATS SECTION - SOCIAL PROOF (SINGLE ROW)
         ======================================== */
         .hero-stats {
             display: flex;
             gap: clamp(20px, 5vw, 40px);
             margin-bottom: 36px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* Keep stats in a single horizontal row */
             animation: fadeInUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards;
         }
 
@@ -622,11 +622,21 @@
             }
 
             .hero-stats {
-                gap: var(--spacing-md);
+                gap: clamp(12px, 3vw, 24px);
+                flex-wrap: nowrap; /* Keep in single row */
             }
 
             .stat-item {
-                min-width: calc(50% - 12px);
+                flex: 1 1 0; /* Equal width, can shrink */
+                min-width: 0; /* Allow shrinking below content size */
+            }
+
+            .stat-number {
+                font-size: clamp(1.5rem, 5vw, 2.25rem);
+            }
+
+            .stat-label {
+                font-size: clamp(0.65rem, 2vw, 0.8125rem);
             }
 
             .feature-card {
@@ -651,11 +661,22 @@
             }
 
             .hero-stats {
-                gap: var(--spacing-sm);
+                gap: clamp(8px, 2vw, 16px);
+                flex-wrap: nowrap; /* Keep in single row even on small screens */
             }
 
             .stat-item {
-                min-width: 100%;
+                flex: 1 1 0; /* Equal width distribution */
+                min-width: 0; /* Allow content to shrink */
+            }
+
+            .stat-number {
+                font-size: clamp(1.25rem, 4.5vw, 1.75rem);
+            }
+
+            .stat-label {
+                font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+                word-wrap: break-word; /* Break long words if needed */
             }
         }
 
