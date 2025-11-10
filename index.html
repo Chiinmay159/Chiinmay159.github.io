@@ -5,108 +5,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BharatVidya CDN Asset – Chinmay</title>
 
-  <!-- ✅ Lightweight SEO meta (non-indexed but crawlable) -->
+  <!-- ✅ SEO & Performance -->
   <meta name="robots" content="noindex,follow">
   <meta name="description" content="Static CDN asset hosting for BharatVidya by Chinmay Bhandari. Contains optimized logo and brand resources.">
   <meta name="author" content="Chinmay Madhav Bhandari">
   <meta name="keywords" content="BharatVidya, CDN, Matra Media, digital library, Indian Knowledge Systems">
-
-  <!-- ✅ Cache control hint -->
   <meta http-equiv="Cache-Control" content="max-age=31536000, immutable">
 
-  <!-- ✅ Performance: Preconnect to CDN -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 
-  <!-- ✅ Font Awesome with SRI for security -->
+  <!-- Font Awesome with SRI -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <style>
-    /* ========================================
-       2025 WORLD-CLASS FOOTER
-       Modern, Accessible, Performance-Optimized
-       ======================================== */
+    /* ============================================
+       🔥 NEXT-GEN FOOTER - 2025 DESIGN
+       Stunning, Bold, Accessible & High-Performance
+       ============================================ */
 
-    /* ✅ CSS Custom Properties (Design Tokens) */
+    /* Import Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+
+    /* CSS Variables */
     :root {
-      /* Color Palette - Light Mode */
-      --color-primary: #004248;
-      --color-primary-hover: #003339;
-      --color-accent: #fcae13;
-      --color-accent-hover: #e09a0a;
-      --color-bg-primary: #fdfdfd;
-      --color-bg-card: #ffffff;
-      --color-text-primary: #1a1a1a;
-      --color-text-secondary: #4a4a4a;
-      --color-text-tertiary: #707070;
-      --color-border: rgba(0, 66, 72, 0.1);
-      --color-border-hover: rgba(0, 66, 72, 0.2);
+      --primary: #004248;
+      --primary-dark: #002a2d;
+      --primary-light: #006670;
+      --accent: #fcae13;
+      --accent-dark: #e09a0a;
+      --accent-light: #ffc850;
 
-      /* Shadows */
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
-      --shadow-glow: 0 0 20px rgba(252, 174, 19, 0.4);
+      --bg-light: #ffffff;
+      --bg-lighter: #f8f9fa;
+      --bg-gradient-start: #004248;
+      --bg-gradient-end: #006670;
 
-      /* Spacing */
-      --spacing-xs: 0.5rem;
-      --spacing-sm: 1rem;
-      --spacing-md: 1.5rem;
-      --spacing-lg: 2rem;
-      --spacing-xl: 3rem;
-      --spacing-2xl: 4rem;
+      --text-dark: #1a1a1a;
+      --text-medium: #4a4a4a;
+      --text-light: #6b7280;
+      --text-lighter: #9ca3af;
 
-      /* Typography */
-      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      --font-size-xs: 0.8125rem;
-      --font-size-sm: 0.875rem;
-      --font-size-base: 1rem;
-      --font-size-lg: 1.125rem;
-      --font-size-xl: 1.5rem;
-      --font-size-2xl: 2rem;
+      --border-light: rgba(0, 0, 0, 0.08);
+      --border-lighter: rgba(0, 0, 0, 0.04);
 
-      /* Border Radius */
+      --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+      --shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
+
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
-      --radius-xl: 24px;
+      --radius-xl: 20px;
+      --radius-2xl: 28px;
 
-      /* Transitions */
-      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* ✅ Dark Mode Support */
+    /* Dark Mode */
     @media (prefers-color-scheme: dark) {
       :root {
-        --color-primary: #4dd4e0;
-        --color-primary-hover: #5ee5f1;
-        --color-accent: #ffc850;
-        --color-accent-hover: #ffd670;
-        --color-bg-primary: #0f1419;
-        --color-bg-card: #1a1f29;
-        --color-text-primary: #e4e6eb;
-        --color-text-secondary: #b0b3b8;
-        --color-text-tertiary: #8a8d91;
-        --color-border: rgba(77, 212, 224, 0.15);
-        --color-border-hover: rgba(77, 212, 224, 0.3);
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-        --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        --primary: #4dd4e0;
+        --primary-light: #6ee0eb;
+        --accent: #ffc850;
+        --bg-light: #1a1f29;
+        --bg-lighter: #0f1419;
+        --bg-gradient-start: #1a1f29;
+        --bg-gradient-end: #0f1419;
+        --text-dark: #e4e6eb;
+        --text-medium: #b0b3b8;
+        --text-light: #8a8d91;
+        --text-lighter: #6b6e73;
+        --border-light: rgba(255, 255, 255, 0.1);
+        --border-lighter: rgba(255, 255, 255, 0.05);
       }
     }
 
-    /* ✅ Reduced Motion Support (Accessibility) */
+    /* Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
       }
     }
 
@@ -123,307 +111,486 @@
       background: transparent;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       min-height: 100vh;
-      font-family: var(--font-primary);
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
     }
 
     img {
       width: 100%;
       max-width: 400px;
       height: auto;
+      margin: 2rem;
     }
 
     figcaption {
       display: none;
     }
 
-    /* ========================================
+    /* ============================================
        FOOTER STYLES
-       ======================================== */
+       ============================================ */
 
-    .bvd-footer {
-      background: var(--color-bg-primary);
-      color: var(--color-text-primary);
+    .footer {
       width: 100%;
-      padding-block: var(--spacing-2xl) var(--spacing-lg);
-      padding-inline: var(--spacing-md);
-      border-block-start: 1px solid var(--color-border);
-      margin-block-start: auto;
-      font-family: var(--font-primary);
+      margin-top: auto;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* ✅ Import Inter font with font-display swap for performance */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-    /* Footer Container */
-    .bvd-footer__container {
-      max-width: 1280px;
-      margin-inline: auto;
+    /* Wave Divider */
+    .footer__wave {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
     }
 
-    /* Header Section */
-    .bvd-footer__header {
-      text-align: center;
-      margin-block-end: var(--spacing-xl);
+    .footer__wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 80px;
     }
 
-    .bvd-footer__title {
-      font-size: clamp(var(--font-size-xl), 4vw, var(--font-size-2xl));
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-block-end: var(--spacing-sm);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
+    .footer__wave .shape-fill {
+      fill: var(--bg-gradient-start);
     }
 
-    /* ✅ Gradient text effect for modern look */
-    @media (prefers-color-scheme: light) {
-      .bvd-footer__title {
-        background: linear-gradient(135deg, var(--color-primary) 0%, #006670 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+    @media (prefers-color-scheme: dark) {
+      .footer__wave .shape-fill {
+        fill: var(--bg-lighter);
       }
     }
 
-    .bvd-footer__tagline {
-      font-size: var(--font-size-lg);
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-      max-width: 700px;
-      margin-inline: auto;
+    /* Hero Section */
+    .footer__hero {
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: white;
+      padding: 4rem 2rem 3rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Contact Grid - Modern CSS Grid */
-    .bvd-footer__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-      gap: var(--spacing-lg);
-      margin-block-end: var(--spacing-xl);
+    /* Animated Background Circles */
+    .footer__hero::before,
+    .footer__hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(252, 174, 19, 0.08);
+      pointer-events: none;
+    }
+
+    .footer__hero::before {
+      width: 400px;
+      height: 400px;
+      top: -200px;
+      right: -100px;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .footer__hero::after {
+      width: 300px;
+      height: 300px;
+      bottom: -150px;
+      left: -50px;
+      animation: float 15s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -30px) scale(1.1); }
+    }
+
+    .footer__hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer__hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer__hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer__hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.6;
+      opacity: 0.95;
+      font-weight: 300;
+      letter-spacing: 0.3px;
     }
 
     /* Contact Cards */
-    .bvd-footer__card {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-lg);
-      text-align: center;
-      box-shadow: var(--shadow-md);
+    .footer__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer__card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
       transition: all var(--transition-slow);
       position: relative;
       overflow: hidden;
     }
 
-    /* ✅ Subtle gradient overlay for depth */
-    .bvd-footer__card::before {
+    .footer__card::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 0%, rgba(252, 174, 19, 0.03) 100%);
-      opacity: 0;
-      transition: opacity var(--transition-base);
-      pointer-events: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      transform-origin: left;
     }
 
-    .bvd-footer__card:hover::before {
-      opacity: 1;
+    .footer__card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
 
-    /* ✅ Enhanced hover with scale and glow */
-    .bvd-footer__card:hover {
-      transform: translateY(-6px) scale(1.02);
-      border-color: var(--color-border-hover);
-      box-shadow: var(--shadow-lg), var(--shadow-glow);
+    .footer__card:hover::before {
+      transform: scaleX(1);
     }
 
-    /* ✅ Focus styles for accessibility */
-    .bvd-footer__card:focus-within {
-      outline: 3px solid var(--color-accent);
-      outline-offset: 2px;
+    .footer__card-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 10px 30px rgba(252, 174, 19, 0.3);
+      transition: all var(--transition);
     }
 
-    /* Card Icon */
-    .bvd-footer__icon {
-      color: var(--color-accent);
-      font-size: 2rem;
-      margin-block-end: var(--spacing-sm);
-      display: inline-block;
-      transition: transform var(--transition-base);
+    .footer__card:hover .footer__card-icon {
+      transform: rotate(10deg) scale(1.1);
+      box-shadow: 0 15px 40px rgba(252, 174, 19, 0.5);
     }
 
-    .bvd-footer__card:hover .bvd-footer__icon {
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    .bvd-footer__card-title {
-      color: var(--color-primary);
-      font-size: var(--font-size-lg);
+    .footer__card-title {
+      font-size: 1.25rem;
       font-weight: 700;
-      margin-block-end: var(--spacing-xs);
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      color: white;
+      letter-spacing: 0.5px;
     }
 
-    .bvd-footer__card-text {
-      font-size: var(--font-size-sm);
-      color: var(--color-text-secondary);
-      margin-block: var(--spacing-xs);
+    .footer__card-text {
+      font-size: 0.95rem;
       line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 1rem;
     }
 
-    .bvd-footer__card-link {
-      color: var(--color-accent);
+    .footer__card-link {
+      color: var(--accent-light);
       text-decoration: none;
       font-weight: 600;
-      transition: color var(--transition-fast);
-      position: relative;
+      transition: all var(--transition);
       display: inline-block;
+      position: relative;
     }
 
-    /* ✅ Modern underline effect */
-    .bvd-footer__card-link::after {
+    .footer__card-link::after {
       content: '';
       position: absolute;
-      inset-block-end: -2px;
-      inset-inline-start: 0;
+      bottom: -2px;
+      left: 0;
       width: 0;
       height: 2px;
-      background: var(--color-primary);
-      transition: width var(--transition-base);
+      background: var(--accent-light);
+      transition: width var(--transition);
     }
 
-    .bvd-footer__card-link:hover::after {
+    .footer__card-link:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .footer__card-link:hover::after {
       width: 100%;
     }
 
-    .bvd-footer__card-link:hover {
-      color: var(--color-primary);
-    }
-
-    /* ✅ Focus styles for links */
-    .bvd-footer__card-link:focus-visible {
-      outline: 2px solid var(--color-accent);
+    .footer__card-link:focus-visible {
+      outline: 2px solid var(--accent);
       outline-offset: 4px;
-      border-radius: var(--radius-sm);
+      border-radius: 4px;
     }
 
-    /* Divider */
-    .bvd-footer__divider {
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        var(--color-border) 50%,
-        transparent 100%
-      );
-      margin-block: var(--spacing-lg);
+    /* Newsletter Section */
+    .footer__newsletter {
+      background: var(--bg-light);
+      padding: 4rem 2rem;
+      text-align: center;
     }
 
-    /* Bottom Section */
-    .bvd-footer__bottom {
+    .footer__newsletter-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .footer__newsletter-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .footer__newsletter-text {
+      font-size: 1.1rem;
+      color: var(--text-medium);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .footer__newsletter-form {
       display: flex;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .footer__newsletter-input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      font-size: 1rem;
+      font-family: var(--font-body);
+      transition: all var(--transition);
+      background: var(--bg-lighter);
+    }
+
+    .footer__newsletter-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(0, 66, 72, 0.1);
+    }
+
+    .footer__newsletter-btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+      font-family: var(--font-body);
+    }
+
+    .footer__newsletter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 66, 72, 0.3);
+    }
+
+    .footer__newsletter-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Footer Bottom */
+    .footer__bottom {
+      background: var(--bg-lighter);
+      padding: 3rem 2rem;
+    }
+
+    .footer__bottom-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer__social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--spacing-md);
-      padding-block-start: var(--spacing-md);
     }
 
-    .bvd-footer__copyright {
-      font-size: var(--font-size-sm);
-      color: var(--color-text-tertiary);
-    }
-
-    /* Social Links */
-    .bvd-footer__social {
+    .footer__social-link {
+      width: 50px;
+      height: 50px;
       display: flex;
-      gap: var(--spacing-sm);
-      list-style: none;
-    }
-
-    .bvd-footer__social-link {
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      background: var(--bg-light);
+      border: 2px solid var(--border-light);
       border-radius: 50%;
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      color: var(--color-text-secondary);
+      color: var(--text-medium);
+      font-size: 1.2rem;
       text-decoration: none;
-      transition: all var(--transition-base);
-      font-size: var(--font-size-lg);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
     }
 
-    .bvd-footer__social-link:hover {
-      background: var(--color-accent);
+    .footer__social-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .footer__social-link i {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer__social-link:hover {
+      border-color: var(--primary);
       color: white;
-      border-color: var(--color-accent);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-4px) rotate(5deg);
+      box-shadow: 0 10px 25px rgba(0, 66, 72, 0.2);
     }
 
-    /* ✅ Focus styles for social links */
-    .bvd-footer__social-link:focus-visible {
-      outline: 2px solid var(--color-accent);
+    .footer__social-link:hover::before {
+      opacity: 1;
+    }
+
+    .footer__social-link:focus-visible {
+      outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
 
-    /* Quick Links */
-    .bvd-footer__links {
+    /* Links Section */
+    .footer__links {
       display: flex;
+      justify-content: center;
+      gap: 2rem;
       flex-wrap: wrap;
-      gap: var(--spacing-md);
-      list-style: none;
-      font-size: var(--font-size-sm);
+      padding: 2rem 0;
+      border-top: 1px solid var(--border-lighter);
+      border-bottom: 1px solid var(--border-lighter);
+      margin-bottom: 2rem;
     }
 
-    .bvd-footer__link {
-      color: var(--color-text-secondary);
+    .footer__link {
+      color: var(--text-medium);
       text-decoration: none;
-      transition: color var(--transition-fast);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all var(--transition);
       position: relative;
     }
 
-    .bvd-footer__link:hover {
-      color: var(--color-primary);
+    .footer__link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width var(--transition);
     }
 
-    .bvd-footer__link:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 3px;
-      border-radius: var(--radius-sm);
+    .footer__link:hover {
+      color: var(--primary);
     }
 
-    /* Mobile Responsiveness */
+    .footer__link:hover::after {
+      width: 100%;
+    }
+
+    .footer__link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    /* Copyright */
+    .footer__copyright {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .footer__copyright-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+
+    .footer__copyright-link:hover {
+      color: var(--primary-light);
+    }
+
+    /* Mobile Responsive */
     @media (max-width: 768px) {
-      .bvd-footer {
-        padding-block: var(--spacing-xl) var(--spacing-md);
+      .footer__hero {
+        padding: 3rem 1.5rem 2rem;
       }
 
-      .bvd-footer__bottom {
+      .footer__cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .footer__newsletter {
+        padding: 3rem 1.5rem;
+      }
+
+      .footer__newsletter-form {
         flex-direction: column;
-        text-align: center;
       }
 
-      .bvd-footer__social {
-        order: -1;
+      .footer__links {
+        gap: 1rem;
+      }
+
+      .footer__wave svg {
+        height: 50px;
       }
     }
 
-    /* ✅ Print styles */
+    /* Print Styles */
     @media print {
-      .bvd-footer__social,
-      .bvd-footer__card:hover {
+      .footer__newsletter,
+      .footer__social,
+      .footer__wave {
         display: none;
       }
 
-      .bvd-footer__card {
-        break-inside: avoid;
+      .footer__hero {
+        background: white;
+        color: black;
       }
     }
   </style>
@@ -434,145 +601,164 @@
     <figcaption>BharatVidya logo hosted on GitHub Pages (CDN asset by Chinmay)</figcaption>
   </figure>
 
-  <!-- ========================================
-       WORLD-CLASS FOOTER - 2025 STANDARDS
-       ======================================== -->
-  <footer class="bvd-footer" itemscope itemtype="https://schema.org/Organization">
-    <div class="bvd-footer__container">
+  <!-- ============================================
+       🔥 NEXT-GEN FOOTER - 2025 DESIGN
+       ============================================ -->
+  <footer class="footer" itemscope itemtype="https://schema.org/Organization">
 
-      <!-- Header Section -->
-      <header class="bvd-footer__header">
-        <h2 class="bvd-footer__title" itemprop="name">Get in Touch With India's Heritage Experts</h2>
-        <p class="bvd-footer__tagline">We are here to assist you with course registration, IKS details, or any academic queries.</p>
-      </header>
+    <!-- Wave Divider -->
+    <div class="footer__wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
 
-      <!-- Contact Grid -->
-      <div class="bvd-footer__grid">
+    <!-- Hero Section with Contact Cards -->
+    <section class="footer__hero">
+      <div class="footer__hero-container">
 
-        <!-- Email Card -->
-        <article class="bvd-footer__card" itemprop="department" itemscope itemtype="https://schema.org/ContactPoint">
-          <i class="fas fa-envelope bvd-footer__icon" aria-hidden="true"></i>
-          <h3 class="bvd-footer__card-title">Email Support</h3>
-          <p class="bvd-footer__card-text">For General Queries &amp; Registrations</p>
-          <p>
+        <!-- Hero Content -->
+        <div class="footer__hero-content">
+          <h2 class="footer__hero-title" itemprop="name">Get in Touch With India's Heritage Experts</h2>
+          <p class="footer__hero-subtitle">We are here to assist you with course registration, IKS details, or any academic queries.</p>
+        </div>
+
+        <!-- Contact Cards -->
+        <div class="footer__cards">
+
+          <!-- Email Card -->
+          <article class="footer__card" itemprop="department" itemscope itemtype="https://schema.org/ContactPoint">
+            <div class="footer__card-icon">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </div>
+            <h3 class="footer__card-title">Email Support</h3>
+            <p class="footer__card-text">For General Queries & Registrations</p>
             <a href="mailto:bharatvidya.in@gmail.com"
-               class="bvd-footer__card-link"
+               class="footer__card-link"
                itemprop="email"
                aria-label="Email us at bharatvidya.in@gmail.com">
               bharatvidya.in@gmail.com
             </a>
-          </p>
-        </article>
+          </article>
 
-        <!-- Location Card -->
-        <article class="bvd-footer__card" itemprop="location" itemscope itemtype="https://schema.org/PostalAddress">
-          <i class="fas fa-university bvd-footer__icon" aria-hidden="true"></i>
-          <h3 class="bvd-footer__card-title">Our Location</h3>
-          <address class="bvd-footer__card-text" style="font-style: normal;">
-            <span itemprop="streetAddress">NO. 812, Chiplunkar Road (ILS, Law College Rd)</span><br>
-            <span itemprop="addressLocality">Shivajinagar</span>,
-            <span itemprop="addressRegion">Pune</span> –
-            <span itemprop="postalCode">411004</span>
-          </address>
-        </article>
+          <!-- Location Card -->
+          <article class="footer__card" itemprop="location" itemscope itemtype="https://schema.org/PostalAddress">
+            <div class="footer__card-icon">
+              <i class="fas fa-university" aria-hidden="true"></i>
+            </div>
+            <h3 class="footer__card-title">Our Location</h3>
+            <address class="footer__card-text" style="font-style: normal;">
+              <span itemprop="streetAddress">NO. 812, Chiplunkar Road (ILS, Law College Rd)</span><br>
+              <span itemprop="addressLocality">Shivajinagar</span>,
+              <span itemprop="addressRegion">Pune</span> –
+              <span itemprop="postalCode">411004</span>
+            </address>
+          </article>
 
-        <!-- Phone Card -->
-        <article class="bvd-footer__card" itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
-          <i class="fas fa-phone-alt bvd-footer__icon" aria-hidden="true"></i>
-          <h3 class="bvd-footer__card-title">Talk to Us</h3>
-          <p class="bvd-footer__card-text">Mon–Fri, 10 AM – 6 PM IST</p>
-          <p>
+          <!-- Phone Card -->
+          <article class="footer__card" itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
+            <div class="footer__card-icon">
+              <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </div>
+            <h3 class="footer__card-title">Talk to Us</h3>
+            <p class="footer__card-text">Mon–Fri, 10 AM – 6 PM IST</p>
             <a href="tel:+919545117239"
-               class="bvd-footer__card-link"
+               class="footer__card-link"
                itemprop="telephone"
                aria-label="Call us at +91 9545117239">
               +91 9545117239
             </a><br>
             <a href="tel:+912025656932"
-               class="bvd-footer__card-link"
+               class="footer__card-link"
                itemprop="telephone"
+               style="margin-top: 0.5rem; display: inline-block;"
                aria-label="Call us at +91 20 2565 6932">
               +91 20 2565 6932
             </a>
-          </p>
-        </article>
+          </article>
 
+        </div>
       </div>
+    </section>
 
-      <!-- Divider -->
-      <div class="bvd-footer__divider" role="separator"></div>
+    <!-- Newsletter Section -->
+    <section class="footer__newsletter">
+      <div class="footer__newsletter-container">
+        <h3 class="footer__newsletter-title">Stay Connected</h3>
+        <p class="footer__newsletter-text">Subscribe to our newsletter for updates on courses, events, and insights into Indian Knowledge Systems.</p>
+        <form class="footer__newsletter-form" action="#" method="post">
+          <input
+            type="email"
+            class="footer__newsletter-input"
+            placeholder="Enter your email address"
+            required
+            aria-label="Email address"
+          >
+          <button type="submit" class="footer__newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
 
-      <!-- Bottom Section -->
-      <div class="bvd-footer__bottom">
+    <!-- Footer Bottom -->
+    <section class="footer__bottom">
+      <div class="footer__bottom-container">
 
-        <!-- Copyright -->
-        <small class="bvd-footer__copyright">
-          © 2025 BharatVidya · All Rights Reserved
-        </small>
+        <!-- Social Media -->
+        <nav aria-label="Social media" class="footer__social">
+          <a href="https://facebook.com/bharatvidya"
+             class="footer__social-link"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Follow us on Facebook">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          </a>
+          <a href="https://twitter.com/bharatvidya"
+             class="footer__social-link"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Follow us on Twitter">
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="https://linkedin.com/company/bharatvidya"
+             class="footer__social-link"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Follow us on LinkedIn">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="https://instagram.com/bharatvidya"
+             class="footer__social-link"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Follow us on Instagram">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="https://youtube.com/@bharatvidya"
+             class="footer__social-link"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Subscribe to our YouTube channel">
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+          </a>
+        </nav>
 
         <!-- Quick Links -->
-        <nav aria-label="Footer navigation">
-          <ul class="bvd-footer__links">
-            <li><a href="#privacy" class="bvd-footer__link">Privacy Policy</a></li>
-            <li><a href="#terms" class="bvd-footer__link">Terms of Service</a></li>
-            <li><a href="#sitemap" class="bvd-footer__link">Sitemap</a></li>
-          </ul>
+        <nav aria-label="Footer navigation" class="footer__links">
+          <a href="#privacy" class="footer__link">Privacy Policy</a>
+          <a href="#terms" class="footer__link">Terms of Service</a>
+          <a href="#about" class="footer__link">About Us</a>
+          <a href="#contact" class="footer__link">Contact</a>
+          <a href="#sitemap" class="footer__link">Sitemap</a>
         </nav>
 
-        <!-- Social Media Links -->
-        <nav aria-label="Social media">
-          <ul class="bvd-footer__social">
-            <li>
-              <a href="https://facebook.com/bharatvidya"
-                 class="bvd-footer__social-link"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Follow us on Facebook">
-                <i class="fab fa-facebook-f" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/bharatvidya"
-                 class="bvd-footer__social-link"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Follow us on Twitter">
-                <i class="fab fa-twitter" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://linkedin.com/company/bharatvidya"
-                 class="bvd-footer__social-link"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Follow us on LinkedIn">
-                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/bharatvidya"
-                 class="bvd-footer__social-link"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Follow us on Instagram">
-                <i class="fab fa-instagram" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://youtube.com/@bharatvidya"
-                 class="bvd-footer__social-link"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Subscribe to our YouTube channel">
-                <i class="fab fa-youtube" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <!-- Copyright -->
+        <p class="footer__copyright">
+          © 2025 <a href="https://bharatvidya.in" class="footer__copyright-link">BharatVidya</a> · All Rights Reserved
+        </p>
 
       </div>
+    </section>
 
-    </div>
   </footer>
 
 </body>
