@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharatvidya - Hero Section</title>
+
+    <style>
+        /* ========================================
+           CSS VARIABLES - Design Token System
+        ======================================== */
+        :root {
+            /* Brand Colors - Enhanced for 2026 */
+            --gold: #fcae13;
+            --gold-light: #ffd700;
+            --gold-dark: #d89000;
+            --gold-glow: rgba(252, 174, 19, 0.4);
+            --teal-dark: #002e33;
+            /* Darker teal for better contrast */
+            --teal-medium: #004248;
+            --teal-light: #006b73;
+            --teal-gradient-start: #001f23;
+            --teal-gradient-end: #004248;
+            --white: #ffffff;
+            --black: #000000;
+
+            /* Glass Morphism */
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-hover: rgba(255, 255, 255, 0.1);
+            --glass-active: rgba(255, 255, 255, 0.08);
+
+            /* Shadows - Enhanced depth */
+            --text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            --text-shadow-strong: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            --card-shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.25);
+            --button-shadow-primary: 0 6px 20px rgba(0, 46, 51, 0.4);
+            --button-shadow-hover: 0 10px 32px rgba(0, 46, 51, 0.5);
+
+            /* Text Colors */
+            --text-primary: rgba(255, 255, 255, 0.98);
+            --text-secondary: rgba(255, 255, 255, 0.92);
+            --text-muted: rgba(255, 255, 255, 0.75);
+
+            /* Transitions - Refined timing */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            /* Spacing */
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-2xl: 64px;
+            --spacing-3xl: 80px;
+
+            /* Border Radius - More refined */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-2xl: 24px;
+            --radius-full: 9999px;
+        }
+
+        /* ========================================
+           RESET & BASE STYLES
+        ======================================== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* Animated background pattern - Enhanced for 2026 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(252, 174, 19, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.02) 0%, transparent 70%);
+            animation: backgroundShift 25s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes backgroundShift {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(-5%, -5%) scale(1.08);
+            }
+
+            66% {
+                transform: translate(5%, 5%) scale(0.92);
+            }
+        }
+
+        /* ========================================
+           HERO SECTION - MAIN CONTAINER
+        ======================================== */
+        .hero-section {
+            position: relative;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-3xl) 0;
+            background: transparent;
+            isolation: isolate;
+        }
+
+        /* Content Container */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            z-index: 1;
+        }
+
+        /* Grid Layout */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* ========================================
+           LEFT CONTENT - TEXT & ACTIONS
+        ======================================== */
+        .hero-content {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Title */
+        .hero-title {
+            font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+            text-shadow: var(--text-shadow);
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            display: block;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: gradientShimmer 4s ease infinite;
+        }
+
+        @keyframes gradientShimmer {
+            0%,
+            100% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
+        }
+
+        /* Description */
+        .hero-description {
+            font-size: clamp(1.125rem, 2vw, 1.35rem);
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 620px;
+            font-weight: 400;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Highlighted BORI text */
+        .hero-description .highlight-bori {
+            color: rgb(250, 192, 98);
+            font-weight: 700;
+        }
+
+        /* ========================================
+           STATS SECTION - SOCIAL PROOF (SINGLE ROW)
+        ======================================== */
+        .hero-stats {
+            display: flex;
+            gap: clamp(20px, 5vw, 40px);
+            margin-bottom: 36px;
+            flex-wrap: nowrap;
+            animation: fadeInUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+            flex: 1 1 auto;
+            position: relative;
+        }
+
+        /* Decorative line under stats - Enhanced */
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+            transition: width var(--transition-base);
+            border-radius: var(--radius-full);
+        }
+
+        .stat-item:hover::after {
+            width: 100%;
+        }
+
+        .stat-number {
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            filter: drop-shadow(0 2px 8px var(--gold-glow));
+            transition: var(--transition-base);
+            will-change: transform;
+        }
+
+        .stat-item:hover .stat-number {
+            filter: drop-shadow(0 4px 14px var(--gold-glow));
+            transform: translateY(-3px) scale(1.08);
+        }
+
+        .stat-label {
+            font-size: clamp(0.75rem, 1.3vw, 0.8125rem);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+        }
+
+        /* ========================================
+           CTA BUTTONS - 2026 WORLD-CLASS DESIGN
+        ======================================== */
+        .hero-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s backwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 36px;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            transition: var(--transition-base);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: -0.01em;
+            font-family: inherit;
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-tap-highlight-color: transparent;
+
+            /* Ensure text stays centered */
+            text-align: center;
+        }
+
+        /* Remove any nested span styling that might affect centering */
+        .btn > * {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Shimmer effect - Enhanced */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Glow effect on hover */
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            pointer-events: none;
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        /* Focus state for accessibility */
+        .btn:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        /* Primary Button - DARKER TEAL with better contrast */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal-medium) 100%);
+            color: var(--white);
+            box-shadow: var(--button-shadow-primary);
+            font-weight: 700;
+        }
+
+        .btn-primary::after {
+            box-shadow: 0 0 30px rgba(252, 174, 19, 0.3) inset;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #001a1d 0%, var(--teal-dark) 100%);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: var(--button-shadow-hover);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        /* Ensure white text on primary button */
+        .btn-primary,
+        .btn-primary span,
+        .btn-primary * {
+            color: var(--white) !important;
+        }
+
+        /* Secondary Button - Glass effect enhanced */
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--white);
+            border: 1.5px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .btn-secondary::after {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1) inset;
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass-hover);
+            border-color: rgba(252, 174, 19, 0.5);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(-2px) scale(1.01);
+            background: var(--glass-active);
+        }
+
+        /* Button icons - Enhanced animation */
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform var(--transition-base);
+            flex-shrink: 0;
+        }
+
+        .btn:hover svg {
+            transform: translateX(5px) scale(1.1);
+        }
+
+        /* ========================================
+           RIGHT SIDE - FEATURE CARDS
+        ======================================== */
+        .hero-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+            opacity: 0;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-lg);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            contain: layout style paint;
+            will-change: transform;
+        }
+
+        /* Subtle glow effect - Enhanced */
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(252, 174, 19, 0.4), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Shine effect on hover */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: left var(--transition-slow);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            background: var(--glass-hover);
+            border-color: rgba(252, 174, 19, 0.35);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        /* Focus state */
+        .feature-card:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* Feature Icon - Enhanced */
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(252, 174, 19, 0.12);
+            border: 1px solid rgba(252, 174, 19, 0.2);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: var(--transition-base);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Icon glow on card hover */
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: var(--radius-xl);
+            background: radial-gradient(circle, rgba(252, 174, 19, 0.2), transparent 70%);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .feature-card:hover .feature-icon::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: rgba(252, 174, 19, 0.22);
+            border-color: rgba(252, 174, 19, 0.5);
+            transform: scale(1.12) rotate(5deg);
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--gold);
+            transition: var(--transition-base);
+        }
+
+        .feature-card:hover .feature-icon svg {
+            fill: var(--gold-light);
+        }
+
+        /* Feature Content */
+        .feature-title {
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-text {
+            font-size: clamp(0.9375rem, 1.5vw, 1rem);
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Full-width card */
+        .feature-card-wide {
+            grid-column: 1 / -1;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN - MOBILE FIRST
+        ======================================== */
+
+        /* Large Desktops */
+        @media (min-width: 1600px) {
+            .hero-container {
+                max-width: 1600px;
+                padding: 0 var(--spacing-xl);
+            }
+
+            .hero-grid {
+                gap: var(--spacing-3xl);
+            }
+        }
+
+        /* Tablets and below */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 56px;
+            }
+
+            .hero-container {
+                padding: 0 var(--spacing-md);
+            }
+
+            .hero-description {
+                max-width: 100%;
+            }
+
+            .hero-features {
+                max-width: 700px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Small tablets */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+                min-height: auto;
+            }
+
+            .hero-features {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card-wide {
+                grid-column: 1;
+            }
+
+            .hero-stats {
+                gap: var(--spacing-lg);
+            }
+
+            .feature-card {
+                padding: 28px;
+            }
+
+            .feature-icon {
+                width: 52px;
+                height: 52px;
+            }
+        }
+
+        /* Mobile devices */
+        @media (max-width: 640px) {
+            .hero-section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .hero-container {
+                padding: 0 20px;
+            }
+
+            .hero-actions {
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 16px 28px;
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                gap: clamp(12px, 3vw, 24px);
+                flex-wrap: nowrap;
+            }
+
+            .stat-item {
+                flex: 1 1 0;
+                min-width: 0;
+            }
+
+            .stat-number {
+                font-size: clamp(1.5rem, 5vw, 2.25rem);
+            }
+
+            .stat-label {
+                font-size: clamp(0.65rem, 2vw, 0.8125rem);
+            }
+
+            .feature-card {
+                padding: var(--spacing-md);
+            }
+
+            .feature-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .feature-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 375px) {
+            .hero-container {
+                padding: 0 var(--spacing-sm);
+            }
+
+            .hero-stats {
+                gap: clamp(8px, 2vw, 16px);
+                flex-wrap: nowrap;
+            }
+
+            .stat-item {
+                flex: 1 1 0;
+                min-width: 0;
+            }
+
+            .stat-number {
+                font-size: clamp(1.25rem, 4.5vw, 1.75rem);
+            }
+
+            .stat-label {
+                font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+                word-wrap: break-word;
+            }
+        }
+
+        /* ========================================
+           ACCESSIBILITY & PERFORMANCE
+        ======================================== */
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+
+            .hero-title,
+            .feature-title {
+                text-shadow: none;
+            }
+
+            .btn-secondary {
+                border-width: 2px;
+            }
+
+            .feature-card {
+                border-width: 2px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body::before {
+                display: none;
+            }
+
+            .hero-section {
+                background: white;
+                color: black;
+            }
+
+            .btn {
+                border: 1px solid black;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section" role="banner" aria-label="Bharatvidya Hero Section">
+        <div class="hero-container">
+            <div class="hero-grid">
+                <!-- Left: Main Content -->
+                <div class="hero-content">
+                    <!-- Main Heading -->
+                    <h1 class="hero-title">Bharatvidya</h1>
+                    <h2 class="hero-subtitle">
+                        <span class="hero-title-highlight">Rediscover India's Civilisational Heritage</span>
+                    </h2>
+
+                    <!-- Description -->
+                    <p class="hero-description">
+                        Self-paced online courses on Vedas, Mahabharata, IKS, and archaeology—taught by expert scholars from the <span class="highlight-bori">Bhandarkar Oriental Research Institute</span> (BORI).
+                    </p>
+
+                    <!-- Stats - Social Proof (Single Row on All Screens) -->
+                    <div class="hero-stats" role="list" aria-label="Platform Statistics">
+                        <div class="stat-item" role="listitem">
+                            <div class="stat-number" aria-label="23 courses available">23</div>
+                            <div class="stat-label">Courses</div>
+                        </div>
+                        <div class="stat-item" role="listitem">
+                            <div class="stat-number" aria-label="37,000 learners">37K</div>
+                            <div class="stat-label">Learners</div>
+                        </div>
+                        <div class="stat-item" role="listitem">
+                            <div class="stat-number" aria-label="109 years legacy">109</div>
+                            <div class="stat-label">Years' Legacy</div>
+                        </div>
+                    </div>
+
+                    <!-- CTAs - Fixed Structure -->
+                    <div class="hero-actions">
+                        <a href="https://www.bharatvidya.in/courses" class="btn btn-primary" target="_blank"
+                            rel="noopener noreferrer" aria-label="Explore all available courses on Bharatvidya">
+                            Explore All Courses
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <a href="https://bharatvidya.edmingle.com/nep-iks" class="btn btn-secondary" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="NEP compliant IKS courses for educational institutions">
+                            IKS for Colleges
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Feature Cards -->
+                <div class="hero-features" role="list" aria-label="Key Features">
+                    <article class="feature-card" role="listitem" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                                <path d="M2 17L12 22L22 17"></path>
+                                <path d="M2 12L12 17L22 12"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Expert Faculty</h3>
+                        <p class="feature-text">Learn from renowned scholars and researchers with decades of experience
+                        </p>
+                    </article>
+
+                    <article class="feature-card" role="listitem" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 8V12L15 15"></path>
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2">
+                                </circle>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Self-Paced</h3>
+                        <p class="feature-text">Learn at your own pace with lifetime access to course materials</p>
+                    </article>
+
+                    <article class="feature-card feature-card-wide" role="listitem" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z">
+                                </path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Certificate Programs</h3>
+                        <p class="feature-text">Earn a "Certificate of Completion" by BORI for each course you complete.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
