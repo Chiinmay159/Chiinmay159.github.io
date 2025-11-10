@@ -1,46 +1,768 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BharatVidya CDN Asset – Chinmay</title>
+    <!-- ===== ESSENTIAL META ===== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- ✅ Lightweight SEO meta (non-indexed but crawlable) -->
-  <meta name="robots" content="noindex,follow">
-  <meta name="description" content="Static CDN asset hosting for BharatVidya by Chinmay Bhandari. Contains optimized logo and brand resources.">
-  <meta name="author" content="Chinmay Madhav Bhandari">
-  <meta name="keywords" content="BharatVidya, CDN, Matra Media, digital library, Indian Knowledge Systems">
+    <!-- ===== SEO & METADATA ===== -->
+    <title>BharatVidya - Explore Sacred Knowledge Categories | Vedas, History, Science & More</title>
+    <meta name="description" content="Discover ancient wisdom through BharatVidya's curated courses. Explore Vedas, Indian Knowledge Systems, History, Art, Science, Philosophy, and Sanskrit Literature.">
+    <meta name="keywords" content="BharatVidya, Indian Knowledge Systems, Vedas, Sanskrit, Ancient Science, Hindu Philosophy, Indian History, Sacred Knowledge">
+    <meta name="author" content="Chinmay Madhav Bhandari">
+    <meta name="theme-color" content="#faf7f2">
 
-  <!-- ✅ Cache control hint -->
-  <meta http-equiv="Cache-Control" content="max-age=31536000, immutable">
+    <!-- ===== SOCIAL SHARING (Open Graph) ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BharatVidya - Sacred Knowledge Categories">
+    <meta property="og:description" content="Explore ancient wisdom through curated courses in Vedas, History, Science, Art, and Philosophy.">
+    <meta property="og:image" content="https://chiinmay159.github.io/Logo.png">
+    <meta property="og:url" content="https://chiinmay159.github.io/">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+    <!-- ===== SOCIAL SHARING (Twitter) ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BharatVidya - Sacred Knowledge Categories">
+    <meta name="twitter:description" content="Discover ancient wisdom through BharatVidya's curated courses.">
+    <meta name="twitter:image" content="https://chiinmay159.github.io/Logo.png">
 
-    img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-    }
+    <!-- ===== PERFORMANCE & CACHING ===== -->
+    <meta http-equiv="Cache-Control" content="max-age=31536000, immutable">
+    <link rel="dns-prefetch" href="https://www.bharatvidya.in">
+    <link rel="preconnect" href="https://www.bharatvidya.in" crossorigin>
 
-    figcaption {
-      display: none; /* Hidden in CDN mode, available if inspected */
-    }
-  </style>
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" type="image/png" href="https://chiinmay159.github.io/Logo.png">
+
+    <style>
+        /* ===== DESIGN SYSTEM: Classical Hindu Art × Modern Excellence ===== */
+        :root {
+            /* Color Palette */
+            --ochre-dark: #8b6e47;
+            --ochre-light: #d4a574;
+            --teal: #0b6b74;
+            --gold: #c9a961;
+            --cream: #faf7f2;
+            --ink: #0a0f14;
+            --ink-soft: #2d3748;
+
+            /* Category Colors - Vibrant & Distinct */
+            --vedas: #e74c3c;
+            --knowledge: #3498db;
+            --history: #f39c12;
+            --art: #9b59b6;
+            --science: #1abc9c;
+            --religion: #e67e22;
+            --governance: #2ecc71;
+            --sanskrit: #34495e;
+
+            /* Transitions */
+            --transition-fluid: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-snap: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: 0.3s ease-out;
+
+            /* Spacing System */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.5rem;
+
+            /* Typography */
+            --font-display: ui-serif, Georgia, "Playfair Display", Cambria, serif;
+            --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", sans-serif;
+        }
+
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== SKIP LINK (Accessibility) ===== */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--ink);
+            color: var(--cream);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            z-index: 100;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ===== MAIN SECTION ===== */
+        .bv-cats {
+            max-width: 1400px;
+            margin: var(--space-xl) auto;
+            padding: var(--space-lg) var(--space-md);
+            position: relative;
+            container-type: inline-size;
+            container-name: categories;
+        }
+
+        /* ===== HEADER WITH LOGO ===== */
+        .bv-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .bv-logo {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin: 0 auto var(--space-md);
+            display: block;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+            transition: transform var(--transition-smooth);
+        }
+
+        .bv-logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== TITLE: Reverent & Dynamic ===== */
+        .bv-cats h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            color: var(--ink);
+            margin-bottom: var(--space-sm);
+            position: relative;
+            line-height: 1.2;
+
+            /* Gradient text effect */
+            background: linear-gradient(135deg, var(--ochre-dark), var(--teal), var(--gold));
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+
+            /* Better contrast fallback */
+            @supports not (-webkit-background-clip: text) {
+                color: var(--ink);
+            }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .bv-cats h1 {
+                animation: gradientFlow 8s ease-in-out infinite;
+            }
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        /* Sacred geometry ornament */
+        .bv-cats h1::before {
+            content: "✦";
+            display: block;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: var(--space-xs);
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+            -webkit-text-fill-color: var(--gold);
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .bv-cats h1::before {
+                animation: fadeIn 0.8s ease-out 0.2s both;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 0.7; transform: translateY(0); }
+        }
+
+        /* ===== GRID: Fluid & Responsive ===== */
+        .bv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+
+            /* Prevent layout shift on hover */
+            padding-bottom: 8px;
+        }
+
+        /* Container query for ultra-responsive design */
+        @container categories (min-width: 900px) {
+            .bv-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.25rem;
+            }
+        }
+
+        @container categories (min-width: 600px) and (max-width: 899px) {
+            .bv-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @container categories (max-width: 599px) {
+            .bv-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
+
+        /* ===== CATEGORY TILE: Immaculate Design ===== */
+        .bv-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 130px;
+            padding: 1.25rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--ink-soft);
+            font-weight: 700;
+            font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+            text-align: center;
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            overflow: hidden;
+
+            /* Enhanced stone-carved effect */
+            background: linear-gradient(135deg,
+                #fdfcfa 0%,
+                #f5f2ed 50%,
+                #ede8e0 100%);
+            border: 1.5px solid rgba(139, 110, 71, 0.12);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.04),
+                0 2px 8px rgba(0, 0, 0, 0.06);
+
+            transition: all var(--transition-snap);
+            outline: 3px solid transparent;
+            outline-offset: 2px;
+
+            /* Prevent layout shift */
+            will-change: transform;
+            transform: translateY(0);
+        }
+
+        /* Yantra pattern overlay - hidden by default */
+        .bv-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 50% 0%, var(--accent-alpha-30), transparent 50%),
+                radial-gradient(circle at 0% 50%, var(--accent-alpha-20), transparent 50%),
+                radial-gradient(circle at 100% 50%, var(--accent-alpha-15), transparent 50%),
+                radial-gradient(circle at 50% 100%, var(--accent-alpha-25), transparent 50%),
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(139, 110, 71, 0.025) 40px,
+                    rgba(139, 110, 71, 0.025) 80px);
+            opacity: 0;
+            transition: opacity var(--transition-snap);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Accent color indicator */
+        .bv-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-snap);
+            border-radius: 10px 0 0 10px;
+        }
+
+        /* Text wrapper with improved readability */
+        .bv-btn span {
+            position: relative;
+            z-index: 2;
+            transition: all var(--transition-snap);
+            display: block;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== HOVER: Sacred Activation ===== */
+        .bv-btn:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            color: var(--ink);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 1),
+                inset 0 -1px 3px rgba(0, 0, 0, 0.06),
+                0 12px 32px var(--accent-alpha-20),
+                0 0 0 1px var(--accent-alpha-10);
+            background: linear-gradient(135deg,
+                #ffffff 0%,
+                #faf7f2 50%,
+                #f2ede5 100%);
+        }
+
+        .bv-btn:hover::before {
+            opacity: 1;
+        }
+
+        .bv-btn:hover::after {
+            opacity: 1;
+        }
+
+        .bv-btn:hover span {
+            transform: scale(1.02);
+        }
+
+        /* ===== FOCUS: Accessibility Excellence ===== */
+        .bv-btn:focus-visible {
+            outline-color: var(--teal);
+            outline-width: 3px;
+            outline-offset: 3px;
+            transform: translateY(-2px);
+        }
+
+        /* ===== ACTIVE STATE ===== */
+        .bv-btn:active {
+            transform: translateY(-3px);
+            transition-duration: 0.1s;
+        }
+
+        /* ===== LOADING STATE ===== */
+        .bv-btn.loading {
+            pointer-events: none;
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .bv-btn.loading::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid var(--accent);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            z-index: 3;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== CATEGORY-SPECIFIC COLORS (Data Attributes) ===== */
+        .bv-btn[data-category="vedas"] {
+            --accent: var(--vedas);
+            --accent-alpha-30: rgba(231, 76, 60, 0.3);
+            --accent-alpha-25: rgba(231, 76, 60, 0.25);
+            --accent-alpha-20: rgba(231, 76, 60, 0.2);
+            --accent-alpha-15: rgba(231, 76, 60, 0.15);
+            --accent-alpha-10: rgba(231, 76, 60, 0.1);
+        }
+
+        .bv-btn[data-category="knowledge"] {
+            --accent: var(--knowledge);
+            --accent-alpha-30: rgba(52, 152, 219, 0.3);
+            --accent-alpha-25: rgba(52, 152, 219, 0.25);
+            --accent-alpha-20: rgba(52, 152, 219, 0.2);
+            --accent-alpha-15: rgba(52, 152, 219, 0.15);
+            --accent-alpha-10: rgba(52, 152, 219, 0.1);
+        }
+
+        .bv-btn[data-category="history"] {
+            --accent: var(--history);
+            --accent-alpha-30: rgba(243, 156, 18, 0.3);
+            --accent-alpha-25: rgba(243, 156, 18, 0.25);
+            --accent-alpha-20: rgba(243, 156, 18, 0.2);
+            --accent-alpha-15: rgba(243, 156, 18, 0.15);
+            --accent-alpha-10: rgba(243, 156, 18, 0.1);
+        }
+
+        .bv-btn[data-category="art"] {
+            --accent: var(--art);
+            --accent-alpha-30: rgba(155, 89, 182, 0.3);
+            --accent-alpha-25: rgba(155, 89, 182, 0.25);
+            --accent-alpha-20: rgba(155, 89, 182, 0.2);
+            --accent-alpha-15: rgba(155, 89, 182, 0.15);
+            --accent-alpha-10: rgba(155, 89, 182, 0.1);
+        }
+
+        .bv-btn[data-category="science"] {
+            --accent: var(--science);
+            --accent-alpha-30: rgba(26, 188, 156, 0.3);
+            --accent-alpha-25: rgba(26, 188, 156, 0.25);
+            --accent-alpha-20: rgba(26, 188, 156, 0.2);
+            --accent-alpha-15: rgba(26, 188, 156, 0.15);
+            --accent-alpha-10: rgba(26, 188, 156, 0.1);
+        }
+
+        .bv-btn[data-category="religion"] {
+            --accent: var(--religion);
+            --accent-alpha-30: rgba(230, 126, 34, 0.3);
+            --accent-alpha-25: rgba(230, 126, 34, 0.25);
+            --accent-alpha-20: rgba(230, 126, 34, 0.2);
+            --accent-alpha-15: rgba(230, 126, 34, 0.15);
+            --accent-alpha-10: rgba(230, 126, 34, 0.1);
+        }
+
+        .bv-btn[data-category="governance"] {
+            --accent: var(--governance);
+            --accent-alpha-30: rgba(46, 204, 113, 0.3);
+            --accent-alpha-25: rgba(46, 204, 113, 0.25);
+            --accent-alpha-20: rgba(46, 204, 113, 0.2);
+            --accent-alpha-15: rgba(46, 204, 113, 0.15);
+            --accent-alpha-10: rgba(46, 204, 113, 0.1);
+        }
+
+        .bv-btn[data-category="sanskrit"] {
+            --accent: var(--sanskrit);
+            --accent-alpha-30: rgba(52, 73, 94, 0.3);
+            --accent-alpha-25: rgba(52, 73, 94, 0.25);
+            --accent-alpha-20: rgba(52, 73, 94, 0.2);
+            --accent-alpha-15: rgba(52, 73, 94, 0.15);
+            --accent-alpha-10: rgba(52, 73, 94, 0.1);
+        }
+
+        /* ===== STAGGERED ENTRANCE ANIMATIONS ===== */
+        @media (prefers-reduced-motion: no-preference) {
+            .bv-btn {
+                animation: sanctumReveal 0.8s var(--transition-fluid) both;
+            }
+
+            .bv-btn:nth-child(1) { animation-delay: 0.05s; }
+            .bv-btn:nth-child(2) { animation-delay: 0.1s; }
+            .bv-btn:nth-child(3) { animation-delay: 0.15s; }
+            .bv-btn:nth-child(4) { animation-delay: 0.2s; }
+            .bv-btn:nth-child(5) { animation-delay: 0.25s; }
+            .bv-btn:nth-child(6) { animation-delay: 0.3s; }
+            .bv-btn:nth-child(7) { animation-delay: 0.35s; }
+            .bv-btn:nth-child(8) { animation-delay: 0.4s; }
+        }
+
+        @keyframes sanctumReveal {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== REDUCED MOTION SUPPORT ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .bv-btn {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+
+            .bv-btn:hover {
+                transform: none;
+            }
+        }
+
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        @media (max-width: 768px) {
+            .bv-cats {
+                margin: var(--space-md) auto;
+                padding: var(--space-md) var(--space-sm);
+            }
+
+            .bv-logo {
+                max-width: 150px;
+            }
+
+            .bv-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+                margin-top: var(--space-md);
+            }
+
+            .bv-btn {
+                min-height: 110px;
+                padding: 1rem;
+                font-size: 0.95rem;
+                border-radius: 8px;
+            }
+
+            .bv-cats h1 {
+                margin-bottom: var(--space-xs);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bv-grid {
+                gap: 0.6rem;
+            }
+
+            .bv-btn {
+                min-height: 105px;
+                padding: 0.85rem;
+                font-size: 0.9rem;
+            }
+
+            .bv-cats h1 {
+                font-size: 1.6rem;
+            }
+
+            .bv-logo {
+                max-width: 120px;
+            }
+        }
+
+        /* ===== HIGH CONTRAST MODE ===== */
+        @media (prefers-contrast: high) {
+            .bv-btn {
+                border-width: 2px;
+                border-color: currentColor;
+            }
+
+            .bv-cats h1 {
+                -webkit-text-fill-color: var(--ink);
+                color: var(--ink);
+            }
+        }
+
+        /* ===== DARK MODE SUPPORT ===== */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --cream: #1a1a1a;
+                --ink: #f5f5f5;
+                --ink-soft: #d1d1d1;
+            }
+
+            .bv-btn {
+                background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 50%, #252525 100%);
+                border-color: rgba(200, 200, 200, 0.2);
+                color: var(--ink-soft);
+                box-shadow:
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                    0 2px 8px rgba(0, 0, 0, 0.4);
+            }
+
+            .bv-btn:hover {
+                background: linear-gradient(135deg, #333 0%, #2a2a2a 50%, #2f2f2f 100%);
+                color: var(--ink);
+            }
+
+            .bv-logo {
+                filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.1));
+            }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .bv-btn::before,
+            .bv-btn::after,
+            .bv-cats h1::before {
+                display: none;
+            }
+
+            .bv-btn {
+                box-shadow: none;
+                border: 1px solid #000;
+            }
+
+            .bv-grid {
+                gap: 0.5rem;
+            }
+
+            @page {
+                margin: 2cm;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .bv-footer {
+            text-align: center;
+            padding: var(--space-lg) var(--space-md);
+            color: var(--ochre-dark);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .bv-footer a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transition-smooth);
+        }
+
+        .bv-footer a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        /* ===== PERFORMANCE: GPU ACCELERATION ===== */
+        .bv-btn,
+        .bv-logo {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
-  <figure>
-    <!-- ✅ Absolute URL ensures reliability in all embed contexts -->
-<img src="https://chiinmay159.github.io/Logo.png" alt="BharatVidya logo by Chinmay">
-    <figcaption>BharatVidya logo hosted on GitHub Pages (CDN asset by Chinmay)</figcaption>
-  </figure>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="bv-cats" aria-label="BharatVidya Course Categories">
+            <!-- Header with Logo -->
+            <header class="bv-header">
+                <img
+                    src="https://chiinmay159.github.io/Logo.png"
+                    alt="BharatVidya - Sacred Knowledge Portal"
+                    class="bv-logo"
+                    width="200"
+                    height="auto"
+                    loading="eager">
+                <h1>Explore Sacred Courses</h1>
+            </header>
+
+            <!-- Category Grid -->
+            <div class="bv-grid" role="list">
+                <a
+                    class="bv-btn"
+                    href="https://www.bharatvidya.in/courses?categories_ids=11010"
+                    data-category="vedas"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    aria-label="Explore Vedas, Epics and Puranas courses">
+                    <span>Vedas, Epics &amp; Puranas</span>
+                </a>
+
+                <a
+                    class="bv-btn"
+                    href="https://www.bharatvidya.in/courses?categories_ids=11024"
+                    data-category="knowledge"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    aria-label="Explore Indian Knowledge Systems courses">
+                    <span>Indian Knowledge Systems</span>
+                </a>
+
+                <a
+                    class="bv-btn"
+                    href="https://www.bharatvidya.in/courses?categories_ids=11009"
+                    data-category="history"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    aria-label="Explore History and Archeology courses">
+                    <span>History &amp; Archeology</span>
+                </a>
+
+                <a
+                    class="bv-btn"
+                    href="https://www.bharatvidya.in/courses?categories_ids=11898"
+                    data-category="art"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    aria-label="Explore Art, Architecture and Culture courses">
+                    <span>Art, Architecture &amp; Culture</span>
+                </a>
+
+                <a
+                    class="bv-btn"
+                    href="https://www.bharatvidya.in/courses?categories_ids=11013"
+                    data-category="science"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    aria-label="Explore Science, Maths, and Medicine courses">
+                    <span>Science, Maths &amp; Medicine</span>
+                </a>
+
+                <a
+                    class="bv-btn"
+                    href="https://www.bharatvidya.in/courses?categories_ids=11011"
+                    data-category="religion"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    aria-label="Explore Religions and Philosophy courses">
+                    <span>Religions &amp; Philosophy</span>
+                </a>
+
+                <a
+                    class="bv-btn"
+                    href="https://www.bharatvidya.in/courses?categories_ids=13134"
+                    data-category="governance"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    aria-label="Explore Governance and Leadership courses">
+                    <span>Governance &amp; Leadership</span>
+                </a>
+
+                <a
+                    class="bv-btn"
+                    href="https://www.bharatvidya.in/courses?categories_ids=11012"
+                    data-category="sanskrit"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    aria-label="Explore Sanskrit Literature and Linguistics courses">
+                    <span>Sanskrit Literature &amp; Linguistics</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bv-footer">
+        <p>Curated by <a href="https://github.com/Chiinmay159" target="_blank" rel="noopener noreferrer">Chinmay Madhav Bhandari</a></p>
+        <p>Powered by <a href="https://www.bharatvidya.in" target="_blank" rel="noopener noreferrer">BharatVidya</a></p>
+    </footer>
+
+    <!-- Optional: Analytics or scripts can go here -->
+    <noscript>
+        <p style="text-align: center; padding: 1rem; background: #fff3cd; color: #856404;">
+            This page works best with JavaScript enabled for enhanced animations and interactions.
+        </p>
+    </noscript>
 </body>
 </html>
-
