@@ -108,25 +108,15 @@
     body {
       margin: 0;
       padding: 0;
-      background: transparent;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-end;
       min-height: 100vh;
       font-family: var(--font-body);
       color: var(--text-dark);
       -webkit-font-smoothing: antialiased;
-    }
-
-    img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      margin: 2rem;
-    }
-
-    figcaption {
-      display: none;
     }
 
     /* ============================================
@@ -153,22 +143,27 @@
       display: block;
       width: calc(100% + 1.3px);
       height: 80px;
+      opacity: 0.3;
     }
 
     .footer__wave .shape-fill {
-      fill: var(--bg-gradient-start);
+      fill: rgba(255, 255, 255, 0.5);
     }
 
     @media (prefers-color-scheme: dark) {
       .footer__wave .shape-fill {
-        fill: var(--bg-lighter);
+        fill: rgba(0, 0, 0, 0.3);
       }
     }
 
     /* Hero Section */
     .footer__hero {
-      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-      color: white;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      color: var(--text-dark);
       padding: 4rem 2rem 3rem;
       position: relative;
       overflow: hidden;
@@ -180,23 +175,24 @@
       content: '';
       position: absolute;
       border-radius: 50%;
-      background: rgba(252, 174, 19, 0.08);
+      background: linear-gradient(135deg, rgba(0, 66, 72, 0.1) 0%, rgba(252, 174, 19, 0.1) 100%);
       pointer-events: none;
+      filter: blur(40px);
     }
 
     .footer__hero::before {
-      width: 400px;
-      height: 400px;
-      top: -200px;
-      right: -100px;
+      width: 500px;
+      height: 500px;
+      top: -250px;
+      right: -150px;
       animation: float 20s ease-in-out infinite;
     }
 
     .footer__hero::after {
-      width: 300px;
-      height: 300px;
-      bottom: -150px;
-      left: -50px;
+      width: 400px;
+      height: 400px;
+      bottom: -200px;
+      left: -100px;
       animation: float 15s ease-in-out infinite reverse;
     }
 
@@ -224,14 +220,15 @@
       font-weight: 900;
       line-height: 1.1;
       margin-bottom: 1rem;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      color: var(--primary);
+      text-shadow: 0 2px 10px rgba(0, 66, 72, 0.15);
     }
 
     .footer__hero-subtitle {
       font-size: clamp(1rem, 2vw, 1.25rem);
       line-height: 1.6;
-      opacity: 0.95;
-      font-weight: 300;
+      color: var(--text-medium);
+      font-weight: 400;
       letter-spacing: 0.3px;
     }
 
@@ -244,14 +241,16 @@
     }
 
     .footer__card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       border-radius: var(--radius-xl);
       padding: 2rem;
       transition: all var(--transition-slow);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     }
 
     .footer__card::before {
@@ -269,9 +268,9 @@
 
     .footer__card:hover {
       transform: translateY(-8px);
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.45);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     }
 
     .footer__card:hover::before {
@@ -302,19 +301,19 @@
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
-      color: white;
+      color: var(--primary);
       letter-spacing: 0.5px;
     }
 
     .footer__card-text {
       font-size: 0.95rem;
       line-height: 1.6;
-      opacity: 0.9;
+      color: var(--text-medium);
       margin-bottom: 1rem;
     }
 
     .footer__card-link {
-      color: var(--accent-light);
+      color: var(--primary);
       text-decoration: none;
       font-weight: 600;
       transition: all var(--transition);
@@ -329,12 +328,12 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--accent-light);
+      background: var(--accent);
       transition: width var(--transition);
     }
 
     .footer__card-link:hover {
-      color: white;
+      color: var(--accent);
       transform: translateX(5px);
     }
 
@@ -350,7 +349,11 @@
 
     /* Newsletter Section */
     .footer__newsletter {
-      background: var(--bg-light);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       padding: 4rem 2rem;
       text-align: center;
     }
@@ -385,17 +388,25 @@
     .footer__newsletter-input {
       flex: 1;
       padding: 1rem 1.5rem;
-      border: 2px solid var(--border-light);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: var(--radius-lg);
       font-size: 1rem;
       font-family: var(--font-body);
       transition: all var(--transition);
-      background: var(--bg-lighter);
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--text-dark);
+    }
+
+    .footer__newsletter-input::placeholder {
+      color: var(--text-light);
     }
 
     .footer__newsletter-input:focus {
       outline: none;
       border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.5);
       box-shadow: 0 0 0 4px rgba(0, 66, 72, 0.1);
     }
 
@@ -424,68 +435,15 @@
 
     /* Footer Bottom */
     .footer__bottom {
-      background: var(--bg-lighter);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
       padding: 3rem 2rem;
     }
 
     .footer__bottom-container {
       max-width: 1200px;
       margin: 0 auto;
-    }
-
-    .footer__social {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .footer__social-link {
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-light);
-      border: 2px solid var(--border-light);
-      border-radius: 50%;
-      color: var(--text-medium);
-      font-size: 1.2rem;
-      text-decoration: none;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .footer__social-link::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-
-    .footer__social-link i {
-      position: relative;
-      z-index: 1;
-    }
-
-    .footer__social-link:hover {
-      border-color: var(--primary);
-      color: white;
-      transform: translateY(-4px) rotate(5deg);
-      box-shadow: 0 10px 25px rgba(0, 66, 72, 0.2);
-    }
-
-    .footer__social-link:hover::before {
-      opacity: 1;
-    }
-
-    .footer__social-link:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
     }
 
     /* Links Section */
@@ -583,23 +541,23 @@
     /* Print Styles */
     @media print {
       .footer__newsletter,
-      .footer__social,
       .footer__wave {
         display: none;
       }
 
-      .footer__hero {
+      .footer__hero,
+      .footer__bottom {
         background: white;
         color: black;
+      }
+
+      .footer__card {
+        break-inside: avoid;
       }
     }
   </style>
 </head>
 <body>
-  <figure>
-    <img src="https://chiinmay159.github.io/Logo.png" alt="BharatVidya logo by Chinmay">
-    <figcaption>BharatVidya logo hosted on GitHub Pages (CDN asset by Chinmay)</figcaption>
-  </figure>
 
   <!-- ============================================
        🔥 NEXT-GEN FOOTER - 2025 DESIGN
@@ -702,45 +660,6 @@
     <!-- Footer Bottom -->
     <section class="footer__bottom">
       <div class="footer__bottom-container">
-
-        <!-- Social Media -->
-        <nav aria-label="Social media" class="footer__social">
-          <a href="https://facebook.com/bharatvidya"
-             class="footer__social-link"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Follow us on Facebook">
-            <i class="fab fa-facebook-f" aria-hidden="true"></i>
-          </a>
-          <a href="https://twitter.com/bharatvidya"
-             class="footer__social-link"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Follow us on Twitter">
-            <i class="fab fa-twitter" aria-hidden="true"></i>
-          </a>
-          <a href="https://linkedin.com/company/bharatvidya"
-             class="footer__social-link"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Follow us on LinkedIn">
-            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-          </a>
-          <a href="https://instagram.com/bharatvidya"
-             class="footer__social-link"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Follow us on Instagram">
-            <i class="fab fa-instagram" aria-hidden="true"></i>
-          </a>
-          <a href="https://youtube.com/@bharatvidya"
-             class="footer__social-link"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Subscribe to our YouTube channel">
-            <i class="fab fa-youtube" aria-hidden="true"></i>
-          </a>
-        </nav>
 
         <!-- Quick Links -->
         <nav aria-label="Footer navigation" class="footer__links">
