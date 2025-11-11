@@ -1,0 +1,155 @@
+<section class="tribute" role="region" aria-labelledby="tribute-heading">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        .tribute {
+            /* Design tokens */
+            --tribute-bg: #002c30;
+            --tribute-accent: #fcae13;
+            --tribute-text: #fff;
+            --tribute-text-muted: rgba(255, 255, 255, 0.9);
+            --tribute-shadow: rgba(0, 0, 0, 0.4);
+            --tribute-shadow-hover: rgba(0, 0, 0, 0.6);
+            --tribute-spacing: clamp(2rem, 5vw, 4rem);
+            --tribute-gap: clamp(2rem, 4vw, 3rem);
+            --tribute-radius: 12px;
+            --tribute-max-width: 1000px;
+            --tribute-img-size: min(350px, 90vw);
+
+            background: var(--tribute-bg);
+            padding: var(--tribute-spacing) 1.5rem;
+            color: var(--tribute-text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+        }
+
+        .tribute__container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: var(--tribute-gap);
+            align-items: center;
+            max-width: var(--tribute-max-width);
+            margin-inline: auto;
+        }
+
+        .tribute__image-wrapper {
+            position: relative;
+            animation: slideIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+        }
+
+        .tribute__image {
+            width: 100%;
+            max-width: var(--tribute-img-size);
+            height: auto;
+            margin-inline: auto;
+            display: block;
+            border-radius: var(--tribute-radius);
+            filter: grayscale(100%);
+            box-shadow: 0 8px 25px var(--tribute-shadow);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .tribute__image:hover {
+            filter: grayscale(10%);
+            transform: scale(1.01);
+            box-shadow: 0 12px 30px var(--tribute-shadow-hover);
+        }
+
+        .tribute__content {
+            animation: slideIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .tribute__heading {
+            color: var(--tribute-accent);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            margin-block: 0 0.8em;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .tribute__text {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            margin-block-end: 1.2em;
+            color: var(--tribute-text-muted);
+            text-align: justify;
+        }
+
+        .tribute__text:last-child {
+            margin-block-end: 0;
+        }
+
+        .tribute__text strong,
+        .tribute__text b {
+            color: var(--tribute-text);
+            font-weight: 700;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tribute__container {
+                text-align: center;
+            }
+
+            .tribute__content,
+            .tribute__text {
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tribute__image,
+            .tribute__image-wrapper,
+            .tribute__content {
+                animation: none;
+                transition: none;
+            }
+
+            .tribute__image:hover {
+                transform: none;
+            }
+        }
+    </style>
+
+    <div class="tribute__container">
+        <div class="tribute__image-wrapper">
+            <a href="https://dme2wmiz2suov.cloudfront.net/websitebuilder/4639/utils/4475436-1.jpg"
+               title="Portrait of Late Shri Rakesh Jhunjhunwala, Patron of BharatVidya"
+               class="is-lightbox">
+                <img src="https://dme2wmiz2suov.cloudfront.net/websitebuilder/4639/utils/4475436-1.jpg"
+                     alt="Portrait of Late Shri Rakesh Jhunjhunwala, Patron of BharatVidya"
+                     loading="lazy"
+                     decoding="async"
+                     class="tribute__image"
+                     onerror="this.src='https://dme2wmiz2suov.cloudfront.net/websitebuilder/4639/utils/4475436-1.webp'">
+            </a>
+        </div>
+
+        <div class="tribute__content">
+            <h3 id="tribute-heading" class="tribute__heading">In Memoriam</h3>
+
+            <p class="tribute__text">
+                Late <strong>Shri Rakesh Jhunjhunwala</strong> was more than a legendary investor.
+                He had a deep and abiding interest in India's history and heritage, recognizing
+                its immense value to the global community.
+            </p>
+
+            <p class="tribute__text">
+                His profound understanding and respect for India's cultural wealth inspired his
+                desire to invest in its accessibility and awareness for future generations. His
+                unwavering support and generous patronage were pivotal in the inception and growth
+                of Bharatvidya.in.
+            </p>
+        </div>
+    </div>
+</section>
