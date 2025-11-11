@@ -56,8 +56,8 @@
       --spacing-xs: clamp(0.5rem, 1vw, 0.75rem);
       --spacing-sm: clamp(1rem, 2vw, 1.25rem);
       --spacing-md: clamp(1.5rem, 3vw, 2rem);
-      --spacing-lg: clamp(2rem, 4vw, 3rem);
-      --spacing-xl: clamp(3rem, 5vw, 4rem);
+      --spacing-lg: clamp(2rem, 4vw, 2.5rem);
+      --spacing-xl: clamp(2.5rem, 5vw, 3.5rem);
 
       /* Shadows - Layered depth */
       --shadow-xs: 0 1px 3px rgba(0, 66, 72, 0.06);
@@ -179,11 +179,11 @@
       padding: 0 var(--spacing-sm);
     }
 
-    /* Main Content Grid - World-class 3-column layout */
+    /* Main Content Grid - Compact 2-row layout */
     .content-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--spacing-lg);
+      gap: var(--spacing-md);
       padding: var(--spacing-xl) var(--spacing-sm);
       position: relative;
     }
@@ -200,69 +200,107 @@
       z-index: 0;
     }
 
-    /* Tablet: 2-column layout */
+    /* Tablet: 2-row layout starts */
     @media (min-width: 768px) {
       .content-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto;
+        grid-template-areas:
+          "video-section-1 about"
+          "video-section-2 about";
       }
 
-      .content-grid > :nth-child(2) {
-        grid-column: 1 / -1; /* About section spans full width */
+      .video-section:nth-child(1) {
+        grid-area: video-section-1;
+      }
+
+      .video-section:nth-child(2) {
+        grid-area: video-section-2;
+      }
+
+      .about-section {
+        grid-area: about;
       }
     }
 
-    /* Desktop: 3-column layout - Video | About | Video */
-    @media (min-width: 1200px) {
+    /* Desktop: Full compact layout with caption | video */
+    @media (min-width: 1024px) {
       .content-grid {
-        grid-template-columns: 1fr 1.3fr 1fr;
-        align-items: start;
+        grid-template-columns: 0.9fr 1fr 1.4fr;
+        grid-template-areas:
+          "caption1 video1 about"
+          "caption2 video2 about";
+        gap: var(--spacing-lg);
       }
 
-      .content-grid > :nth-child(2) {
-        grid-column: auto; /* Reset span */
+      .video-section:nth-child(1) {
+        grid-area: unset;
+        display: contents; /* Makes children participate in parent grid */
+      }
+
+      .video-section:nth-child(1) .video-caption {
+        grid-area: caption1;
+      }
+
+      .video-section:nth-child(1) .video-wrapper {
+        grid-area: video1;
+      }
+
+      .video-section:nth-child(2) {
+        grid-area: unset;
+        display: contents;
+      }
+
+      .video-section:nth-child(2) .video-caption {
+        grid-area: caption2;
+      }
+
+      .video-section:nth-child(2) .video-wrapper {
+        grid-area: video2;
+      }
+
+      .about-section {
+        grid-area: about;
       }
     }
 
-    /* Content Cards - Premium design */
-    .content-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      transition:
-        transform var(--transition-base),
-        box-shadow var(--transition-base);
+    /* Video Section Container (for mobile/tablet) */
+    .video-section {
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      gap: var(--spacing-sm);
       position: relative;
       z-index: var(--z-base);
       animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-      /* Performance optimization */
-      contain: layout style paint;
-      will-change: transform;
     }
 
-    .content-card:nth-child(1) {
+    .video-section:nth-child(1) {
       animation-delay: 0.1s;
     }
 
-    .content-card:nth-child(2) {
-      animation-delay: 0s;
-    }
-
-    .content-card:nth-child(3) {
+    .video-section:nth-child(2) {
       animation-delay: 0.2s;
     }
 
-    @media (hover: hover) {
-      .content-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow-xl);
-      }
+    /* Video Caption Card */
+    .video-caption {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: var(--spacing-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      transition:
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
+      position: relative;
+      overflow: hidden;
+      contain: layout style paint;
     }
 
     /* Accent border on hover */
-    .content-card::before {
+    .video-caption::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -278,22 +316,145 @@
     }
 
     @media (hover: hover) {
-      .content-card:hover::before {
+      .video-caption:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .video-caption:hover::before {
         opacity: 1;
       }
     }
 
-    /* Video Wrapper - Optimized for performance */
-    .card-video-wrapper {
+    .caption-header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+    }
+
+    .caption-icon {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: var(--accent-color);
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .caption-title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 700;
+      color: var(--primary-color);
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .caption-description {
+      font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+      line-height: 1.6;
+      color: var(--text-light);
+      flex: 1;
+    }
+
+    /* CTA Button */
+    .caption-cta {
+      margin-top: auto;
+      padding-top: var(--spacing-sm);
+      border-top: 1px solid var(--border-light);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.625rem 1.25rem;
+      background: var(--accent-color);
+      color: var(--primary-dark);
+      border: none;
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
       overflow: hidden;
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+      min-height: 44px;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width var(--transition-base), height var(--transition-base);
+    }
+
+    .cta-button:hover::before {
+      width: 200px;
+      height: 200px;
+    }
+
+    .cta-button span,
+    .cta-button i {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button i {
+      transition: transform var(--transition-fast);
+    }
+
+    @media (hover: hover) {
+      .cta-button:hover {
+        background: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .cta-button:hover i {
+        transform: translateX(4px);
+      }
+    }
+
+    .cta-button:active {
+      background: var(--accent-active);
+      transform: translateY(0);
+    }
+
+    /* Video Wrapper */
+    .video-wrapper {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      position: relative;
+      transition:
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
       contain: strict;
     }
 
-    .card-video-wrapper::after {
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    }
+
+    .video-container::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -303,11 +464,11 @@
       pointer-events: none;
     }
 
-    .card-video-wrapper:hover::after {
+    .video-wrapper:hover .video-container::after {
       opacity: 1;
     }
 
-    .card-video-wrapper iframe {
+    .video-container iframe {
       position: absolute;
       top: 0;
       left: 0;
@@ -316,22 +477,63 @@
       border: 0;
     }
 
-    /* Card Caption */
-    .card-caption {
+    @media (hover: hover) {
+      .video-wrapper:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-xl);
+      }
+    }
+
+    /* About Section */
+    .about-section {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
       padding: var(--spacing-md);
       display: flex;
       flex-direction: column;
       gap: var(--spacing-sm);
-      flex: 1;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
+      animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0s both;
+      contain: layout style paint;
     }
 
-    /* Section Header */
-    .section-header {
-      text-align: left;
+    /* Accent border on hover */
+    .about-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      padding: 2px;
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-light));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity var(--transition-base);
+      pointer-events: none;
+    }
+
+    @media (hover: hover) {
+      .about-section:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .about-section:hover::before {
+        opacity: 1;
+      }
+    }
+
+    .about-header {
       margin-bottom: var(--spacing-sm);
     }
 
-    .section-title {
+    .about-title {
       font-family: var(--font-display);
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
@@ -342,7 +544,7 @@
       margin-bottom: var(--spacing-sm);
     }
 
-    .section-title::after {
+    .about-title::after {
       content: '';
       position: absolute;
       bottom: -0.5rem;
@@ -354,17 +556,18 @@
       animation: slideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
     }
 
-    /* About Card Specific Styles */
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      flex: 1;
+    }
+
     .about-text {
       font-size: clamp(1rem, 2vw, 1.0625rem);
       line-height: 1.75;
       color: var(--text-light);
-      margin-bottom: var(--spacing-sm);
-      text-align: left;
-    }
-
-    .about-text:last-child {
-      margin-bottom: 0;
+      margin: 0;
     }
 
     .about-text strong {
@@ -372,145 +575,10 @@
       font-weight: 600;
     }
 
-    /* Divider in About section */
     .about-divider {
       border-top: 2px solid var(--border-light);
       padding-top: var(--spacing-md);
-      margin-top: var(--spacing-md);
-    }
-
-    /* Video Card Caption */
-    .card-caption-header {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .card-icon {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--accent-color);
-      flex-shrink: 0;
-      margin-top: 0.25rem;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .card-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-      font-weight: 700;
-      color: var(--primary-color);
-      line-height: 1.3;
-      margin: 0;
-    }
-
-    .card-description {
-      font-size: clamp(0.9375rem, 2vw, 1rem);
-      line-height: 1.7;
-      color: var(--text-light);
-      flex: 1;
-    }
-
-    /* Card Meta - Tags and CTA */
-    .card-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-xs);
       margin-top: auto;
-      padding-top: var(--spacing-md);
-      border-top: 1px solid var(--border-light);
-    }
-
-    .card-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-      color: white;
-      border-radius: var(--radius-full);
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition:
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      /* Touch target size - minimum 44x44px */
-      min-height: 44px;
-    }
-
-    .card-tag::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: translate(-50%, -50%);
-      transition: width var(--transition-base), height var(--transition-base);
-    }
-
-    .card-tag:hover::before {
-      width: 200px;
-      height: 200px;
-    }
-
-    .card-tag i {
-      font-size: 0.875rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .card-tag span {
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (hover: hover) {
-      .card-tag:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-    }
-
-    /* Primary CTA Button - "Visit Course" */
-    .visit-course-btn {
-      background: var(--accent-color);
-      color: var(--primary-dark);
-      font-weight: 600;
-      font-size: 0.9375rem;
-      padding: 0.625rem 1.25rem;
-      box-shadow: var(--shadow-sm);
-      transition:
-        background-color var(--transition-fast),
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast);
-    }
-
-    .visit-course-btn i {
-      transition: transform var(--transition-fast);
-    }
-
-    @media (hover: hover) {
-      .visit-course-btn:hover {
-        background: var(--accent-hover);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .visit-course-btn:hover i {
-        transform: translateX(4px);
-      }
-    }
-
-    .visit-course-btn:active {
-      background: var(--accent-active);
-      transform: translateY(0);
     }
 
     /* Focus styles for accessibility */
@@ -578,23 +646,27 @@
         scroll-behavior: auto !important;
       }
 
-      .content-card {
+      .video-caption,
+      .video-wrapper,
+      .about-section {
         will-change: auto;
       }
     }
 
     /* High contrast mode support */
     @media (prefers-contrast: high) {
-      .content-card {
+      .video-caption,
+      .video-wrapper,
+      .about-section {
         border: 2px solid var(--border-medium);
       }
 
-      .card-tag {
+      .cta-button {
         border: 2px solid currentColor;
       }
     }
 
-    /* Dark mode support (respects system preference) */
+    /* Dark mode support */
     @media (prefers-color-scheme: dark) {
       :root {
         --text-dark: #f0f0f0;
@@ -606,25 +678,18 @@
         --border-medium: #505050;
       }
 
-      .content-card {
+      .video-caption,
+      .video-wrapper,
+      .about-section {
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
       }
     }
 
     /* Responsive optimizations */
     @media (max-width: 767px) {
-      .card-caption {
+      .video-caption,
+      .about-section {
         padding: var(--spacing-sm);
-      }
-
-      .card-meta {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .card-tag {
-        justify-content: center;
-        width: 100%;
       }
     }
 
@@ -646,13 +711,14 @@
         color: black;
       }
 
-      .content-card {
+      .video-caption,
+      .about-section {
         break-inside: avoid;
         box-shadow: none;
         border: 1px solid #000;
       }
 
-      .card-video-wrapper {
+      .video-wrapper {
         display: none;
       }
     }
@@ -677,33 +743,25 @@
   <!-- Main Content -->
   <main id="main-content" class="content-grid container" role="main">
 
-    <!-- Video Card 1: PM Modi on Mahabharata -->
-    <article class="content-card" aria-labelledby="video-1-title">
-      <div class="card-video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/DDowFU6ScZk"
-          title="Video: Hon. Prime Minister Narendra Modi on Mahabharata Course by BORI"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-      </div>
-      <div class="card-caption">
-        <div class="card-caption-header">
-          <i class="fas fa-play-circle card-icon" aria-hidden="true"></i>
-          <h2 id="video-1-title" class="card-title">
+    <!-- Video Section 1: PM Modi on Mahabharata -->
+    <section class="video-section" aria-labelledby="video-1-title">
+      <!-- Caption (Left on Desktop) -->
+      <div class="video-caption">
+        <div class="caption-header">
+          <i class="fas fa-play-circle caption-icon" aria-hidden="true"></i>
+          <h2 id="video-1-title" class="caption-title">
             Hon. Prime Minister Narendra Modi on Mahabharata Course by BORI
           </h2>
         </div>
-        <p class="card-description">
+        <p class="caption-description">
           Watch as India's Hon. Prime Minister Shri Narendra Modi discusses the significance of the
           Mahabharata course offered by the Bhandarkar Oriental Research Institute, highlighting the
           importance of preserving our ancient texts and civilisational wisdom.
         </p>
-        <div class="card-meta">
+        <div class="caption-cta">
           <a
             href="https://www.bharatvidya.in/course/18ParvansofMahabharata-81095"
-            class="card-tag visit-course-btn"
+            class="cta-button"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit the Mahabharata Online Course (opens in new tab)">
@@ -712,15 +770,65 @@
           </a>
         </div>
       </div>
-    </article>
 
-    <!-- About BharatVidya Card -->
-    <article class="content-card" aria-labelledby="about-title">
-      <div class="card-caption">
-        <div class="section-header">
-          <h1 id="about-title" class="section-title">About BharatVidya</h1>
+      <!-- Video (Right on Desktop) -->
+      <div class="video-wrapper">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/DDowFU6ScZk"
+            title="Video: Hon. Prime Minister Narendra Modi on Mahabharata Course by BORI"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
+      </div>
+    </section>
 
+    <!-- Video Section 2: Finance Minister Launch -->
+    <section class="video-section" aria-labelledby="video-2-title">
+      <!-- Caption (Left on Desktop) -->
+      <div class="video-caption">
+        <div class="caption-header">
+          <i class="fas fa-play-circle caption-icon" aria-hidden="true"></i>
+          <h2 id="video-2-title" class="caption-title">
+            Hon. Finance Minister Smt. Nirmala Sitaraman Launches BharatVidya
+          </h2>
+        </div>
+        <p class="caption-description">
+          Experience the historic launch of BharatVidya platform by Hon. Finance Minister of India,
+          Smt. Nirmala Sitaraman at the Bhandarkar Oriental Research Institute on September 21, 2022.
+          This momentous event marks a new era in digital learning for Indian knowledge systems.
+        </p>
+        <div class="caption-cta">
+          <span class="cta-button" style="background: var(--primary-color); color: white; cursor: default;">
+            <i class="fas fa-calendar" aria-hidden="true"></i>
+            <span>September 21, 2022</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Video (Right on Desktop) -->
+      <div class="video-wrapper">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/-grvtNb1S-Q"
+            title="Video: Hon. Finance Minister Smt. Nirmala Sitaraman launches BharatVidya at BORI"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section (Right Half on Desktop) -->
+    <aside class="about-section" aria-labelledby="about-title">
+      <div class="about-header">
+        <h1 id="about-title" class="about-title">About BharatVidya</h1>
+      </div>
+
+      <div class="about-content">
         <p class="about-text">
           <strong>BharatVidya.in</strong> is your essential portal to India's timeless civilisational heritage.
         </p>
@@ -740,39 +848,7 @@
           <strong>Matra Media & Communications Pvt. Ltd.</strong>
         </p>
       </div>
-    </article>
-
-    <!-- Video Card 2: Finance Minister Launch -->
-    <article class="content-card" aria-labelledby="video-2-title">
-      <div class="card-video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/-grvtNb1S-Q"
-          title="Video: Hon. Finance Minister Smt. Nirmala Sitaraman launches BharatVidya at BORI"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-      </div>
-      <div class="card-caption">
-        <div class="card-caption-header">
-          <i class="fas fa-play-circle card-icon" aria-hidden="true"></i>
-          <h2 id="video-2-title" class="card-title">
-            Hon. Finance Minister Smt. Nirmala Sitaraman Launches BharatVidya
-          </h2>
-        </div>
-        <p class="card-description">
-          Experience the historic launch of BharatVidya platform by Hon. Finance Minister of India,
-          Smt. Nirmala Sitaraman at the Bhandarkar Oriental Research Institute on September 21, 2022.
-          This momentous event marks a new era in digital learning for Indian knowledge systems.
-        </p>
-        <div class="card-meta">
-          <span class="card-tag" role="text">
-            <i class="fas fa-calendar" aria-hidden="true"></i>
-            <span>September 21, 2022</span>
-          </span>
-        </div>
-      </div>
-    </article>
+    </aside>
 
   </main>
 </body>
