@@ -1,0 +1,255 @@
+<style>
+    /* ===== Refined BharatVidya Category Grid ===== */
+
+    :root {
+        --bg-tone: #f2f6f6;
+        --bg-white: #ffffff;
+        --ink: #1f2727;
+        --ink-soft: #556565;
+        --ink-invert: #ffffff;
+        --accent: #004249;
+        --accent-light: #0a6c6a;
+        --accent-glow: rgba(0, 66, 72, 0.1);
+        --radius: 14px;
+        --shadow-subtle: 0 2px 8px rgba(0, 0, 0, .06);
+        --shadow-hover: 0 12px 28px rgba(0, 66, 72, .18);
+        --space-card: clamp(2rem, 4vw, 3rem);
+    }
+
+    .bv-band {
+        background: var(--bg-tone);
+        border-radius: var(--radius);
+        padding: var(--space-card);
+        margin: 3rem auto;
+        max-width: 1180px;
+    }
+
+    .bv-band h1 {
+        font-family: Merriweather, serif;
+        font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: -0.01em;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .bv-subtitle {
+        text-align: center;
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+        color: var(--ink-soft);
+        margin-bottom: 2.5rem;
+        font-weight: 400;
+    }
+
+    .bv-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(1.25rem, 2.5vw, 1.75rem);
+    }
+
+    @media (max-width: 900px) {
+        .bv-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 520px) {
+        .bv-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .bv-category {
+        background: var(--bg-white);
+        border-radius: 13px;
+        padding: 0;
+        box-shadow: var(--shadow-subtle);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+    }
+
+    .bv-category::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bv-category:hover::before {
+        transform: scaleX(1);
+    }
+
+    .bv-category:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-hover);
+        border-color: rgba(0, 66, 72, 0.15);
+    }
+
+    .bv-category a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.75rem 1.25rem;
+        text-decoration: none;
+        color: var(--ink);
+        height: 100%;
+        min-height: 140px;
+        justify-content: center;
+        transition: color 0.3s ease;
+    }
+
+    .category-icon {
+        font-size: 2.5rem;
+        line-height: 1;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: grayscale(0.2);
+    }
+
+    .bv-category:hover .category-icon {
+        transform: scale(1.15) rotate(-5deg);
+        filter: grayscale(0);
+    }
+
+    .category-title {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.35;
+        color: var(--accent);
+        transition: color 0.3s ease;
+    }
+
+    .bv-category:hover .category-title {
+        color: var(--accent-light);
+    }
+
+    /* Optional: Add a subtle gradient background on hover */
+    .bv-category::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .bv-category:hover::after {
+        opacity: 1;
+    }
+
+    .bv-category a {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Accessibility: Focus states */
+    .bv-category:focus-within {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+    }
+
+    .bv-category a:focus {
+        outline: none;
+    }
+
+    /* Optional: Stagger animation on page load */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .bv-category {
+        animation: fadeInUp 0.5s ease backwards;
+    }
+
+    .bv-category:nth-child(1) { animation-delay: 0.05s; }
+    .bv-category:nth-child(2) { animation-delay: 0.1s; }
+    .bv-category:nth-child(3) { animation-delay: 0.15s; }
+    .bv-category:nth-child(4) { animation-delay: 0.2s; }
+    .bv-category:nth-child(5) { animation-delay: 0.25s; }
+    .bv-category:nth-child(6) { animation-delay: 0.3s; }
+    .bv-category:nth-child(7) { animation-delay: 0.35s; }
+    .bv-category:nth-child(8) { animation-delay: 0.4s; }
+</style>
+
+<section class="bv-band" aria-label="Course Categories">
+    <h1>What would you like to explore?</h1>
+    <p class="bv-subtitle">Discover the rich tapestry of Indian knowledge traditions</p>
+
+    <div class="bv-grid">
+        <article class="bv-category">
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11010">
+                <span class="category-icon" aria-hidden="true">📚</span>
+                <span class="category-title">Vedas, Epics and Puranas</span>
+            </a>
+        </article>
+
+        <article class="bv-category">
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11024">
+                <span class="category-icon" aria-hidden="true">🧠</span>
+                <span class="category-title">Indian Knowledge Systems</span>
+            </a>
+        </article>
+
+        <article class="bv-category">
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11009">
+                <span class="category-icon" aria-hidden="true">🏛️</span>
+                <span class="category-title">History and Archeology</span>
+            </a>
+        </article>
+
+        <article class="bv-category">
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11898">
+                <span class="category-icon" aria-hidden="true">🎨</span>
+                <span class="category-title">Art, Architecture and Culture</span>
+            </a>
+        </article>
+
+        <article class="bv-category">
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11013">
+                <span class="category-icon" aria-hidden="true">🔬</span>
+                <span class="category-title">Science, Mathematics and Medicine</span>
+            </a>
+        </article>
+
+        <article class="bv-category">
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11011">
+                <span class="category-icon" aria-hidden="true">🕉️</span>
+                <span class="category-title">Religions and Philosophy</span>
+            </a>
+        </article>
+
+        <article class="bv-category">
+            <a href="https://www.bharatvidya.in/courses?categories_ids=13134">
+                <span class="category-icon" aria-hidden="true">⚖️</span>
+                <span class="category-title">Governance and Leadership</span>
+            </a>
+        </article>
+
+        <article class="bv-category">
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11012">
+                <span class="category-icon" aria-hidden="true">✍️</span>
+                <span class="category-title">Sanskrit Literature and Linguistics</span>
+            </a>
+        </article>
+    </div>
+</section>

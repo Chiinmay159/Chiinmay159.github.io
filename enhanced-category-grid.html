@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BharatVidya - Enhanced Category Explorer</title>
+    <style>
+        /* ===== Enhanced BharatVidya Category Explorer ===== */
+
+        :root {
+            --bg-tone: #f2f6f6;
+            --bg-white: #ffffff;
+            --ink: #1f2727;
+            --ink-soft: #556565;
+            --ink-light: #7a8989;
+            --ink-invert: #ffffff;
+            --accent: #004249;
+            --accent-light: #0a6c6a;
+            --accent-lighter: #e6f3f3;
+            --accent-glow: rgba(0, 66, 72, 0.15);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, .05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, .08);
+            --shadow-lg: 0 15px 35px rgba(0, 0, 0, .12);
+            --space-card: clamp(1.75rem, 3.5vw, 2.5rem);
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            background: var(--bg-tone);
+            color: var(--ink);
+            padding: 2rem 1rem;
+        }
+
+        .bv-explorer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-card);
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ===== Header Section ===== */
+        .bv-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .bv-header h1 {
+            font-family: Merriweather, serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .bv-header p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--ink-soft);
+            margin-bottom: 1.5rem;
+        }
+
+        .bv-stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== Search & Filter Bar ===== */
+        .bv-controls {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-wrapper {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: var(--ink-light);
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.85rem 1rem 0.85rem 2.75rem;
+            border: 2px solid rgba(0, 66, 72, 0.15);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--bg-white);
+            transition: all 0.3s var(--transition-smooth);
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .search-input::placeholder {
+            color: var(--ink-light);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.65rem 1.25rem;
+            border: 2px solid rgba(0, 66, 72, 0.2);
+            border-radius: 50px;
+            background: var(--bg-white);
+            color: var(--ink-soft);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s var(--transition-smooth);
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent-lighter);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--ink-invert);
+            border-color: var(--accent);
+        }
+
+        /* ===== Category Grid ===== */
+        .bv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .bv-category-card {
+            background: var(--bg-white);
+            border: 2px solid rgba(0, 66, 72, 0.12);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s var(--transition-smooth);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .bv-category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-light) 0%, var(--accent) 100%);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s var(--transition-smooth);
+        }
+
+        .bv-category-card:hover::before {
+            transform: scaleY(1);
+            transform-origin: top;
+        }
+
+        .bv-category-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .category-icon {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-lighter) 0%, rgba(0, 66, 72, 0.08) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            transition: all 0.4s var(--transition-smooth);
+        }
+
+        .bv-category-card:hover .category-icon {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .bv-category-card:hover .category-title {
+            color: var(--accent-light);
+        }
+
+        .category-count {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            font-weight: 500;
+        }
+
+        .category-description {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--ink-soft);
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tag {
+            padding: 0.3rem 0.75rem;
+            background: var(--accent-lighter);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .tag.popular {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+        }
+
+        .tag.new {
+            background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
+            color: white;
+        }
+
+        /* ===== No Results State ===== */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: var(--ink-soft);
+            margin-bottom: 0.5rem;
+        }
+
+        .no-results p {
+            color: var(--ink-light);
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .bv-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-wrapper {
+                width: 100%;
+            }
+
+            .filter-group {
+                justify-content: center;
+            }
+
+            .bv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Loading Animation ===== */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .loading .bv-category-card {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* ===== Accessibility ===== */
+        .bv-category-card:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .search-input:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* ===== Hidden class ===== */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="bv-explorer">
+        <!-- Header -->
+        <header class="bv-header">
+            <h1>What would you like to explore?</h1>
+            <p>Discover the rich tapestry of Indian knowledge across 8 comprehensive categories</p>
+            <div class="bv-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCourses">150+</span>
+                    <span class="stat-label">Courses</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">25K+</span>
+                    <span class="stat-label">Learners</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search & Filter Controls -->
+        <div class="bv-controls">
+            <div class="search-wrapper">
+                <span class="search-icon">🔍</span>
+                <input
+                    type="text"
+                    class="search-input"
+                    id="searchInput"
+                    placeholder="Search categories by name or keyword..."
+                    aria-label="Search categories"
+                >
+            </div>
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="popular">Popular</button>
+                <button class="filter-btn" data-filter="new">New</button>
+            </div>
+        </div>
+
+        <!-- Category Grid -->
+        <div class="bv-grid" id="categoryGrid">
+            <!-- Categories will be rendered here by JavaScript -->
+        </div>
+
+        <!-- No Results State -->
+        <div class="no-results" id="noResults">
+            <div class="no-results-icon">🔍</div>
+            <h3>No categories found</h3>
+            <p>Try adjusting your search or filter to find what you're looking for</p>
+        </div>
+    </div>
+
+    <script>
+        // Category data with enhanced information
+        const categories = [
+            {
+                id: 11010,
+                title: "Vedas, Epics and Puranas",
+                icon: "📚",
+                description: "Explore ancient scriptures, timeless epics, and sacred texts that form the foundation of Indian wisdom.",
+                courses: 23,
+                tags: ["popular"],
+                keywords: ["veda", "epic", "purana", "scripture", "mahabharata", "ramayana"]
+            },
+            {
+                id: 11024,
+                title: "Indian Knowledge Systems",
+                icon: "🧠",
+                description: "Discover traditional knowledge frameworks, indigenous sciences, and holistic learning systems.",
+                courses: 18,
+                tags: ["popular", "new"],
+                keywords: ["knowledge", "system", "traditional", "indigenous", "holistic"]
+            },
+            {
+                id: 11009,
+                title: "History and Archeology",
+                icon: "🏛️",
+                description: "Uncover India's rich historical timeline and archaeological treasures spanning millennia.",
+                courses: 27,
+                tags: [],
+                keywords: ["history", "archaeology", "ancient", "civilization", "heritage"]
+            },
+            {
+                id: 11898,
+                title: "Art, Architecture and Culture",
+                icon: "🎨",
+                description: "Experience the diversity of Indian artistic expressions, architectural marvels, and cultural traditions.",
+                courses: 31,
+                tags: ["popular"],
+                keywords: ["art", "architecture", "culture", "temple", "sculpture", "painting"]
+            },
+            {
+                id: 11013,
+                title: "Science, Mathematics and Medicine",
+                icon: "🔬",
+                description: "Study India's pioneering contributions to mathematics, scientific inquiry, and medical sciences.",
+                courses: 19,
+                tags: ["new"],
+                keywords: ["science", "mathematics", "medicine", "ayurveda", "astronomy", "math"]
+            },
+            {
+                id: 11011,
+                title: "Religions and Philosophy",
+                icon: "🕉️",
+                description: "Delve into profound philosophical schools, spiritual traditions, and religious diversity.",
+                courses: 25,
+                tags: ["popular"],
+                keywords: ["religion", "philosophy", "spiritual", "dharma", "yoga", "meditation"]
+            },
+            {
+                id: 13134,
+                title: "Governance and Leadership",
+                icon: "⚖️",
+                description: "Learn about ancient governance models, statecraft principles, and leadership wisdom.",
+                courses: 12,
+                tags: ["new"],
+                keywords: ["governance", "leadership", "politics", "administration", "arthashastra"]
+            },
+            {
+                id: 11012,
+                title: "Sanskrit Literature and Linguistics",
+                icon: "✍️",
+                description: "Master the classical language, literary treasures, and linguistic sophistication of Sanskrit.",
+                courses: 16,
+                tags: [],
+                keywords: ["sanskrit", "literature", "linguistics", "language", "grammar", "poetry"]
+            }
+        ];
+
+        // Render categories
+        function renderCategories(categoriesToRender) {
+            const grid = document.getElementById('categoryGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (categoriesToRender.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.add('show');
+                return;
+            }
+
+            noResults.classList.remove('show');
+
+            grid.innerHTML = categoriesToRender.map(cat => `
+                <article
+                    class="bv-category-card"
+                    role="button"
+                    tabindex="0"
+                    data-category-id="${cat.id}"
+                    aria-label="${cat.title}"
+                    onclick="navigateToCategory(${cat.id})"
+                    onkeypress="handleKeyPress(event, ${cat.id})"
+                >
+                    <div class="category-header">
+                        <div class="category-icon">${cat.icon}</div>
+                        <div class="category-info">
+                            <h3 class="category-title">${cat.title}</h3>
+                            <p class="category-count">${cat.courses} courses</p>
+                        </div>
+                    </div>
+                    <p class="category-description">${cat.description}</p>
+                    ${cat.tags.length > 0 ? `
+                        <div class="category-tags">
+                            ${cat.tags.map(tag => `<span class="tag ${tag}">${tag}</span>`).join('')}
+                        </div>
+                    ` : ''}
+                </article>
+            `).join('');
+        }
+
+        // Navigate to category
+        function navigateToCategory(categoryId) {
+            window.location.href = `https://www.bharatvidya.in/courses?categories_ids=${categoryId}`;
+        }
+
+        // Handle keyboard navigation
+        function handleKeyPress(event, categoryId) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                navigateToCategory(categoryId);
+            }
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        let currentFilter = 'all';
+
+        searchInput.addEventListener('input', (e) => {
+            filterAndRender();
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                filterAndRender();
+            });
+        });
+
+        // Combined filter and search
+        function filterAndRender() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            let filtered = categories.filter(cat => {
+                // Apply tag filter
+                if (currentFilter !== 'all' && !cat.tags.includes(currentFilter)) {
+                    return false;
+                }
+
+                // Apply search filter
+                if (searchTerm) {
+                    const matchTitle = cat.title.toLowerCase().includes(searchTerm);
+                    const matchDescription = cat.description.toLowerCase().includes(searchTerm);
+                    const matchKeywords = cat.keywords.some(kw => kw.includes(searchTerm));
+                    return matchTitle || matchDescription || matchKeywords;
+                }
+
+                return true;
+            });
+
+            renderCategories(filtered);
+        }
+
+        // Initial render
+        renderCategories(categories);
+
+        // Update total courses count
+        const totalCourses = categories.reduce((sum, cat) => sum + cat.courses, 0);
+        document.getElementById('totalCourses').textContent = totalCourses;
+
+        // Keyboard navigation between cards
+        document.addEventListener('keydown', (e) => {
+            const cards = Array.from(document.querySelectorAll('.bv-category-card'));
+            const activeElement = document.activeElement;
+            const currentIndex = cards.indexOf(activeElement);
+
+            if (currentIndex === -1) return;
+
+            let nextIndex;
+            switch(e.key) {
+                case 'ArrowRight':
+                    nextIndex = (currentIndex + 1) % cards.length;
+                    cards[nextIndex].focus();
+                    e.preventDefault();
+                    break;
+                case 'ArrowLeft':
+                    nextIndex = (currentIndex - 1 + cards.length) % cards.length;
+                    cards[nextIndex].focus();
+                    e.preventDefault();
+                    break;
+                case 'ArrowDown':
+                    const cols = window.innerWidth > 768 ? 3 : 1;
+                    nextIndex = Math.min(currentIndex + cols, cards.length - 1);
+                    cards[nextIndex].focus();
+                    e.preventDefault();
+                    break;
+                case 'ArrowUp':
+                    const colsUp = window.innerWidth > 768 ? 3 : 1;
+                    nextIndex = Math.max(currentIndex - colsUp, 0);
+                    cards[nextIndex].focus();
+                    e.preventDefault();
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
