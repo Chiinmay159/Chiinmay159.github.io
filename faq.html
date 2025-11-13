@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - BharatVidya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        /* --- Section Layout --- */
+        .bvd-faq-world-class {
+            max-width: 850px;
+            margin: 2.5em auto;
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .bvd-faq-world-class h2 {
+            text-align: center;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            color: #004248;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        /* Elegant underline accent */
+        .bvd-faq-world-class h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #fcae13, #f59e0b);
+            border-radius: 2px;
+        }
+
+        /* --- FAQ List --- */
+        .faq-list-clean {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .faq-list-clean details {
+            background: #ffffff;
+            border: 1px solid rgba(0, 66, 72, 0.08);
+            border-radius: 10px;
+            padding: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-list-clean details:hover {
+            border-color: rgba(252, 174, 19, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+
+        /* Open State: Glass-morphism effect */
+        .faq-list-clean details[open] {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-color: rgba(252, 174, 19, 0.4);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Summary Styles (Question) */
+        .faq-list-clean summary {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+            position: relative;
+            padding: 0.9rem 3rem 0.9rem 1.25rem;
+            color: #004248;
+            list-style: none;
+            transition: all 0.3s ease;
+            user-select: none;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-list-clean summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-list-clean summary:hover {
+            color: #00656e;
+            background: rgba(252, 174, 19, 0.03);
+        }
+
+        details[open] summary {
+            color: #003338;
+            border-bottom: 1px solid rgba(0, 66, 72, 0.08);
+            padding-bottom: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Custom Chevron Icon with enhanced animation */
+        .faq-list-clean summary::after {
+            content: "\f078";
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            font-size: 0.85rem;
+            color: #fcae13;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(252, 174, 19, 0.1);
+            border-radius: 50%;
+        }
+
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(180deg);
+            background: rgba(252, 174, 19, 0.2);
+        }
+
+        /* Answer Content with slide-down animation */
+        .faq-answer {
+            padding: 0 1.25rem 1rem 1.25rem;
+            animation: slideDown 0.3s ease-out;
+            will-change: opacity, transform;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .faq-list-clean p {
+            margin: 0;
+            padding-left: 1rem;
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            border-left: 3px solid #fcae13;
+        }
+
+        /* Accessibility focus */
+        .faq-list-clean summary:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(252, 174, 19, 0.3);
+            border-radius: 8px;
+        }
+
+        .faq-list-clean summary:focus-visible {
+            outline: 2px solid #fcae13;
+            outline-offset: 2px;
+            border-radius: 8px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .bvd-faq-world-class {
+                margin: 1.5em auto;
+                padding: 1.5rem 1rem;
+                border-radius: 12px;
+            }
+
+            .bvd-faq-world-class h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .faq-list-clean summary {
+                padding: 0.8rem 2.5rem 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .faq-list-clean summary::after {
+                right: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 1rem 0.9rem 1rem;
+            }
+
+            .faq-list-clean p {
+                font-size: 0.875rem;
+                padding-left: 0.75rem;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Optional: Add a subtle pattern to the background */
+        .bvd-faq-world-class::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background-image: radial-gradient(circle at 1px 1px, rgba(0, 66, 72, 0.03) 1px, transparent 0);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <section class="bvd-faq-world-class" role="region" aria-labelledby="faq-title">
+        <h2 id="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-list-clean">
+            <details>
+                <summary>Is there a fixed schedule for BharatVidya.in's courses?</summary>
+                <div class="faq-answer">
+                    <p>The courses are <strong>self-paced, on-demand</strong>, and offer <strong>lifetime access</strong>. You can begin and complete the lectures anytime.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Are the courses beginner-friendly?</summary>
+                <div class="faq-answer">
+                    <p>Yes. All courses are designed for learners of all levels—<strong>no prior background required</strong> to begin learning.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Are the courses compliant with NEP 2020?</summary>
+                <div class="faq-answer">
+                    <p>Yes. They are fully aligned with the National Education Policy and are eligible for IKS academic credits in all partnering institutions.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Are the lectures live?</summary>
+                <div class="faq-answer">
+                    <p>All lectures are <strong>prerecorded</strong> and hosted on our learning portal, allowing you to access and watch them anytime, repeatedly.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Do I get a certificate after completing a course?</summary>
+                <div class="faq-answer">
+                    <p>Yes. Every learner receives a <strong>verified certificate</strong> issued jointly by <strong>BharatVidya &amp; BORI</strong> upon successful completion.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Can I access the courses on mobile?</summary>
+                <div class="faq-answer">
+                    <p>Yes. All courses are <strong>mobile and tablet friendly</strong> for seamless access on any device via our learning platform.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <script>
+        // Optional: Add smooth opening/closing behavior
+        document.querySelectorAll('details').forEach(detail => {
+            detail.addEventListener('toggle', function() {
+                if (this.open) {
+                    // Close other details if you want accordion behavior
+                    // document.querySelectorAll('details').forEach(d => {
+                    //     if (d !== this) d.open = false;
+                    // });
+                }
+            });
+        });
+
+        // Optional: Keyboard navigation enhancement
+        document.querySelectorAll('summary').forEach(summary => {
+            summary.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
