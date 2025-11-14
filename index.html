@@ -2,45 +2,581 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BharatVidya CDN Asset – Chinmay</title>
 
-  <!-- ✅ Lightweight SEO meta (non-indexed but crawlable) -->
+  <!-- ✅ SEO & Performance -->
   <meta name="robots" content="noindex,follow">
   <meta name="description" content="Static CDN asset hosting for BharatVidya by Chinmay Bhandari. Contains optimized logo and brand resources.">
   <meta name="author" content="Chinmay Madhav Bhandari">
   <meta name="keywords" content="BharatVidya, CDN, Matra Media, digital library, Indian Knowledge Systems">
-
-  <!-- ✅ Cache control hint -->
   <meta http-equiv="Cache-Control" content="max-age=31536000, immutable">
 
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+
+  <!-- Font Awesome with SRI -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
   <style>
+    /* ============================================
+       🔥 NEXT-GEN FOOTER - 2025 DESIGN
+       Stunning, Bold, Accessible & High-Performance
+       ============================================ */
+
+    /* Import Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+
+    /* CSS Variables */
+    :root {
+      --primary: #004248;
+      --primary-dark: #002a2d;
+      --primary-light: #006670;
+      --accent: #fcae13;
+      --accent-dark: #e09a0a;
+      --accent-light: #ffc850;
+
+      --bg-light: #ffffff;
+      --bg-lighter: #f8f9fa;
+      --bg-gradient-start: #004248;
+      --bg-gradient-end: #006670;
+
+      --text-dark: #1a1a1a;
+      --text-medium: #4a4a4a;
+      --text-light: #6b7280;
+      --text-lighter: #9ca3af;
+
+      --border-light: rgba(0, 0, 0, 0.08);
+      --border-lighter: rgba(0, 0, 0, 0.04);
+
+      --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+      --shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-2xl: 28px;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #4dd4e0;
+        --primary-light: #6ee0eb;
+        --accent: #ffc850;
+        --bg-light: #1a1f29;
+        --bg-lighter: #0f1419;
+        --bg-gradient-start: #1a1f29;
+        --bg-gradient-end: #0f1419;
+        --text-dark: #e4e6eb;
+        --text-medium: #b0b3b8;
+        --text-light: #8a8d91;
+        --text-lighter: #6b6e73;
+        --border-light: rgba(255, 255, 255, 0.1);
+        --border-lighter: rgba(255, 255, 255, 0.05);
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background: transparent;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================
+       FOOTER STYLES
+       ============================================ */
+
+    .footer {
+      width: 100%;
+      margin-top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Wave Divider */
+    .footer__wave {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .footer__wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 80px;
+      opacity: 0.3;
+    }
+
+    .footer__wave .shape-fill {
+      fill: rgba(255, 255, 255, 0.5);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .footer__wave .shape-fill {
+        fill: rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    /* Hero Section */
+    .footer__hero {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      color: var(--text-dark);
+      padding: 2.5rem 1.5rem;
+      position: relative;
+    }
+
+    .footer__hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer__hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .footer__hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+      text-shadow: 0 2px 10px rgba(0, 66, 72, 0.15);
+    }
+
+    .footer__hero-subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      line-height: 1.5;
+      color: var(--text-medium);
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    /* Contact Cards */
+    .footer__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .footer__card {
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all var(--transition-slow);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .footer__card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      transform-origin: left;
+    }
+
+    .footer__card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.45);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .footer__card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .footer__card-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      color: white;
+      box-shadow: 0 8px 20px rgba(252, 174, 19, 0.3);
+      transition: all var(--transition);
+    }
+
+    .footer__card:hover .footer__card-icon {
+      transform: rotate(5deg) scale(1.05);
+      box-shadow: 0 12px 30px rgba(252, 174, 19, 0.4);
+    }
+
+    .footer__card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+    }
+
+    .footer__card-text {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-medium);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer__card-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition);
+      display: inline-block;
+      position: relative;
+    }
+
+    .footer__card-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition);
+    }
+
+    .footer__card-link:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .footer__card-link:hover::after {
+      width: 100%;
+    }
+
+    .footer__card-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    /* Footer Bottom */
+    .footer__bottom {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+
+    .footer__bottom-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Links Section */
+    .footer__links {
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-lighter);
     }
 
-    img {
+    .footer__link {
+      color: var(--text-medium);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all var(--transition);
+      position: relative;
+    }
+
+    .footer__link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width var(--transition);
+    }
+
+    .footer__link:hover {
+      color: var(--primary);
+    }
+
+    .footer__link:hover::after {
       width: 100%;
-      max-width: 400px;
-      height: auto;
     }
 
-    figcaption {
-      display: none; /* Hidden in CDN mode, available if inspected */
+    .footer__link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    /* Copyright */
+    .footer__copyright {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .footer__copyright-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+
+    .footer__copyright-link:hover {
+      color: var(--primary-light);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .footer__hero {
+        padding: 2rem 1.25rem;
+      }
+
+      .footer__hero-content {
+        margin-bottom: 1.5rem;
+      }
+
+      .footer__cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .footer__card {
+        padding: 1.25rem;
+      }
+
+      .footer__card-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .footer__card-title {
+        font-size: 1rem;
+      }
+
+      .footer__card-text {
+        font-size: 0.8125rem;
+      }
+
+      .footer__bottom {
+        padding: 1.5rem 1.25rem 1.25rem;
+      }
+
+      .footer__links {
+        gap: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .footer__link {
+        font-size: 0.8125rem;
+      }
+
+      .footer__wave svg {
+        height: 50px;
+      }
+    }
+
+    /* Tablet Responsive */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .footer__cards {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .footer__wave {
+        display: none;
+      }
+
+      .footer__hero,
+      .footer__bottom {
+        background: white;
+        color: black;
+        backdrop-filter: none;
+      }
+
+      .footer__card {
+        break-inside: avoid;
+        background: white;
+        backdrop-filter: none;
+      }
     }
   </style>
 </head>
 <body>
-  <figure>
-    <!-- ✅ Absolute URL ensures reliability in all embed contexts -->
-<img src="https://chiinmay159.github.io/Logo.png" alt="BharatVidya logo by Chinmay">
-    <figcaption>BharatVidya logo hosted on GitHub Pages (CDN asset by Chinmay)</figcaption>
-  </figure>
+
+  <!-- ============================================
+       🔥 NEXT-GEN FOOTER - 2025 DESIGN
+       ============================================ -->
+  <footer class="footer" itemscope itemtype="https://schema.org/Organization">
+
+    <!-- Wave Divider -->
+    <div class="footer__wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+
+    <!-- Hero Section with Contact Cards -->
+    <section class="footer__hero">
+      <div class="footer__hero-container">
+
+        <!-- Hero Content -->
+        <div class="footer__hero-content">
+          <h2 class="footer__hero-title" itemprop="name">Get in Touch With India's Heritage Experts</h2>
+          <p class="footer__hero-subtitle">We are here to assist you with course registration, IKS details, or any academic queries.</p>
+        </div>
+
+        <!-- Contact Cards -->
+        <div class="footer__cards">
+
+          <!-- Email Card -->
+          <article class="footer__card" itemprop="department" itemscope itemtype="https://schema.org/ContactPoint">
+            <div class="footer__card-icon">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </div>
+            <h3 class="footer__card-title">Email Support</h3>
+            <p class="footer__card-text">For General Queries & Registrations</p>
+            <a href="mailto:bharatvidya.in@gmail.com"
+               class="footer__card-link"
+               itemprop="email"
+               aria-label="Email us at bharatvidya.in@gmail.com">
+              bharatvidya.in@gmail.com
+            </a>
+          </article>
+
+          <!-- Location Card -->
+          <article class="footer__card" itemprop="location" itemscope itemtype="https://schema.org/PostalAddress">
+            <div class="footer__card-icon">
+              <i class="fas fa-university" aria-hidden="true"></i>
+            </div>
+            <h3 class="footer__card-title">Our Location</h3>
+            <address class="footer__card-text" style="font-style: normal;">
+              <span itemprop="streetAddress">NO. 812, Chiplunkar Road (ILS, Law College Rd)</span><br>
+              <span itemprop="addressLocality">Shivajinagar</span>,
+              <span itemprop="addressRegion">Pune</span> –
+              <span itemprop="postalCode">411004</span>
+            </address>
+          </article>
+
+          <!-- Phone Card -->
+          <article class="footer__card" itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
+            <div class="footer__card-icon">
+              <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </div>
+            <h3 class="footer__card-title">Talk to Us</h3>
+            <p class="footer__card-text">Mon–Fri, 10 AM – 6 PM IST</p>
+            <a href="tel:+919545117239"
+               class="footer__card-link"
+               itemprop="telephone"
+               aria-label="Call us at +91 9545117239">
+              +91 9545117239
+            </a><br>
+            <a href="tel:+912025656932"
+               class="footer__card-link"
+               itemprop="telephone"
+               style="margin-top: 0.5rem; display: inline-block;"
+               aria-label="Call us at +91 20 2565 6932">
+              +91 20 2565 6932
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Bottom -->
+    <section class="footer__bottom">
+      <div class="footer__bottom-container">
+
+        <!-- Quick Links -->
+        <nav aria-label="Footer navigation" class="footer__links">
+          <a href="#privacy" class="footer__link">Privacy Policy</a>
+          <a href="#terms" class="footer__link">Terms of Service</a>
+          <a href="#about" class="footer__link">About Us</a>
+          <a href="#contact" class="footer__link">Contact</a>
+          <a href="#sitemap" class="footer__link">Sitemap</a>
+        </nav>
+
+        <!-- Copyright -->
+        <p class="footer__copyright">
+          © 2025 <a href="https://bharatvidya.in" class="footer__copyright-link">BharatVidya</a> · All Rights Reserved
+        </p>
+
+      </div>
+    </section>
+
+  </footer>
+
 </body>
 </html>
 
