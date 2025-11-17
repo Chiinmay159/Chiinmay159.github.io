@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhandarkar Oriental Research Institute</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://dme2wmiz2suov.cloudfront.net">
+
+    <!-- Optimized font loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ==========================================================================
+           BORI Institute Section - Modern, Accessible, Performant
+           ========================================================================== */
+
+        /* CSS Custom Properties for easy theming and maintenance */
+        :root {
+            /* Colors */
+            --color-primary: #004248;
+            --color-primary-dark: #002a2d;
+            --color-text: #333333;
+            --color-text-inverse: #ffffff;
+            --color-border: #e0e0e0;
+            --color-shadow-sm: rgba(0, 0, 0, 0.1);
+            --color-shadow-md: rgba(0, 0, 0, 0.15);
+
+            /* Typography */
+            --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-size-base: clamp(1rem, 0.9rem + 0.3vw, 1.125rem);
+            --font-weight-regular: 400;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --line-height-base: 1.6;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 0.8rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 3rem;
+            --space-2xl: 5rem;
+
+            /* Layout */
+            --container-max-width: 1200px;
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+
+            /* Transitions */
+            --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            /* Animation */
+            --animation-fade-in: fadeIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* ==========================================================================
+           Institute Section
+           ========================================================================== */
+
+        .institute {
+            padding-block: var(--space-2xl);
+            padding-inline: var(--space-lg);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-base);
+            color: var(--color-text);
+        }
+
+        .institute__container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+            gap: var(--space-xl);
+            max-width: var(--container-max-width);
+            margin-inline: auto;
+            align-items: center;
+        }
+
+        /* ==========================================================================
+           Image Section
+           ========================================================================== */
+
+        .institute__figure {
+            margin: 0;
+            container-type: inline-size;
+        }
+
+        .institute__link {
+            display: block;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            transition: transform var(--transition-base);
+        }
+
+        .institute__link:focus {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 4px;
+        }
+
+        .institute__link:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        .institute__link:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 4px;
+        }
+
+        .institute__link:hover {
+            transform: translateY(-4px);
+        }
+
+        .institute__image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 25px var(--color-shadow-md);
+            transition: box-shadow var(--transition-slow);
+
+            /* Animation */
+            opacity: 0;
+            transform: translateY(15px);
+            animation: var(--animation-fade-in) 0.2s;
+        }
+
+        .institute__link:hover .institute__image {
+            box-shadow: 0 12px 35px var(--color-shadow-md);
+        }
+
+        /* ==========================================================================
+           Content Section
+           ========================================================================== */
+
+        .institute__content {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: var(--animation-fade-in);
+        }
+
+        .institute__text {
+            font-size: var(--font-size-base);
+            margin-block-end: var(--space-lg);
+        }
+
+        .institute__text:last-of-type {
+            margin-block-end: var(--space-xl);
+        }
+
+        .institute__text strong {
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+        }
+
+        /* ==========================================================================
+           Social Links
+           ========================================================================== */
+
+        .institute__social {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            padding-block-start: var(--space-lg);
+            border-block-start: 1px solid var(--color-border);
+        }
+
+        .institute__social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 10px 18px;
+            background-color: var(--color-primary);
+            color: var(--color-text-inverse);
+            text-decoration: none;
+            font-weight: var(--font-weight-semibold);
+            font-size: 0.95rem;
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 3px 8px var(--color-shadow-sm);
+            transition:
+                background-color var(--transition-base),
+                transform var(--transition-fast),
+                box-shadow var(--transition-base);
+        }
+
+        .institute__social-link i {
+            font-size: 1.1em;
+        }
+
+        /* Hover state */
+        .institute__social-link:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px var(--color-shadow-sm);
+        }
+
+        /* Focus state */
+        .institute__social-link:focus {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        .institute__social-link:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        .institute__social-link:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        /* Active state */
+        .institute__social-link:active {
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           Animations
+           ========================================================================== */
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==========================================================================
+           Responsive Design - Mobile First Approach
+           ========================================================================== */
+
+        @media (max-width: 768px) {
+            .institute {
+                padding-block: var(--space-xl);
+            }
+
+            .institute__container {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .institute__text {
+                text-align: start;
+                margin-block-end: var(--space-md);
+            }
+
+            .institute__social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .institute {
+                padding-inline: var(--space-md);
+            }
+
+            .institute__social-link {
+                flex: 1 1 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ==========================================================================
+           Accessibility - Reduced Motion
+           ========================================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .institute__image,
+            .institute__content {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        }
+
+        /* ==========================================================================
+           Print Styles
+           ========================================================================== */
+
+        @media print {
+            .institute {
+                padding: 0;
+            }
+
+            .institute__social {
+                display: none;
+            }
+
+            .institute__image {
+                box-shadow: none;
+            }
+        }
+
+        /* ==========================================================================
+           Dark Mode Support (Optional Enhancement)
+           ========================================================================== */
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-primary: #00a8b5;
+                --color-primary-dark: #008891;
+                --color-text: #e4e4e7;
+                --color-text-inverse: #18181b;
+                --color-border: #3f3f46;
+                --color-shadow-sm: rgba(0, 0, 0, 0.3);
+                --color-shadow-md: rgba(0, 0, 0, 0.4);
+            }
+
+            body {
+                background-color: #18181b;
+                color: var(--color-text);
+            }
+
+            .institute__image {
+                opacity: 0.95;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="institute" role="region" aria-labelledby="institute-title">
+        <div class="institute__container">
+            <figure class="institute__figure">
+                <a href="https://dme2wmiz2suov.cloudfront.net/websitebuilder/4639/utils/4475415-2.jpg"
+                   class="institute__link"
+                   aria-label="View full size image of Bhandarkar Oriental Research Institute">
+                    <picture>
+                        <source
+                            srcset="https://dme2wmiz2suov.cloudfront.net/websitebuilder/4639/utils/4541111-Bhandarkar_Institute.webp"
+                            type="image/webp">
+                        <img
+                            src="https://dme2wmiz2suov.cloudfront.net/websitebuilder/4639/utils/4475415-2.jpg"
+                            alt="Historic photograph of the Bhandarkar Oriental Research Institute in Pune, established in 1917"
+                            class="institute__image"
+                            loading="lazy"
+                            decoding="async"
+                            width="450"
+                            height="300">
+                    </picture>
+                </a>
+            </figure>
+
+            <div class="institute__content">
+                <h2 id="institute-title" class="sr-only">Bhandarkar Oriental Research Institute Information</h2>
+
+                <p class="institute__text">
+                    Established in 1917, the <strong>Bhandarkar Oriental Research Institute (BORI)</strong> is a premier center for research in Indology and Asian Studies, renowned globally for its contributions to manuscriptology and critical textual studies.
+                </p>
+
+                <p class="institute__text">
+                    The institute undertakes a robust academic research program and is home to over <strong>28,000 rare manuscripts</strong> and <strong>1,53,000 rare books</strong>. BORI has published nearly 300 books and journals, including magnum opuses such as the Critical Edition of the Mahabharata, History of Dharmashastra, and the Vedic Bibliography.
+                </p>
+
+                <nav class="institute__social" aria-label="BORI social media links">
+                    <a href="https://x.com/BhandarkarI/highlights"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="institute__social-link"
+                       aria-label="Follow BORI on X (formerly Twitter)">
+                        <i class="fab fa-x-twitter" aria-hidden="true"></i>
+                        <span>Follow on X</span>
+                    </a>
+                    <a href="https://www.youtube.com/c/bhandarkarorientalresearchinstitute"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="institute__social-link"
+                       aria-label="Watch BORI content on YouTube">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://www.facebook.com/BORIPUNE/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="institute__social-link"
+                       aria-label="Follow BORI on Facebook">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        <span>Facebook</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
