@@ -1,0 +1,183 @@
+<!-- ============================================
+     SECTION 2: COURSE CATEGORIES
+     Copy-paste after Section 1 (Hero)
+     ============================================ -->
+
+<div id="categories-section" class="bv-section bv-section--gradient bv-section--textured">
+    <div class="container">
+        
+        <!-- Section Header -->
+        <header class="section-header">
+            <span class="section-eyebrow">Curated Pathways</span>
+            <h2 class="section-title">The Course Catalogue</h2>
+            <p class="section-subtitle">
+                Explore eight pathways of India's civilisational knowledge—from Vedic literature 
+                to governance, philosophy, and classical arts.
+            </p>
+            
+            <!-- Decorative Separator -->
+            <div class="separator">
+                <div class="separator-dot"></div>
+                <div class="separator-dot"></div>
+                <div class="separator-dot"></div>
+            </div>
+        </header>
+        
+        <!-- Category Grid -->
+        <div class="category-grid">
+            
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11010" 
+               class="category-card">
+                <h3 class="category-title">Vedas, Epics and Puranas</h3>
+            </a>
+            
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11024" 
+               class="category-card">
+                <h3 class="category-title">Indian Knowledge Systems</h3>
+            </a>
+            
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11009" 
+               class="category-card">
+                <h3 class="category-title">History and Archaeology</h3>
+            </a>
+            
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11898" 
+               class="category-card">
+                <h3 class="category-title">Art, Architecture and Culture</h3>
+            </a>
+            
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11013" 
+               class="category-card">
+                <h3 class="category-title">Science, Mathematics and Medicine</h3>
+            </a>
+            
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11011" 
+               class="category-card">
+                <h3 class="category-title">Religions and Philosophy</h3>
+            </a>
+            
+            <a href="https://www.bharatvidya.in/courses?categories_ids=13134" 
+               class="category-card">
+                <h3 class="category-title">Governance and Leadership</h3>
+            </a>
+            
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11012" 
+               class="category-card">
+                <h3 class="category-title">Sanskrit Literature and Linguistics</h3>
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+
+<style>
+    /* ==========================================
+       SECTION 2: CATEGORY STYLES
+       ========================================== */
+    
+    /* Decorative Separator */
+    .separator {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: var(--space-md);
+    }
+    
+    .separator-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--color-gold-300);
+        border-radius: 50%;
+        opacity: 0.7;
+    }
+    
+    /* Category Grid */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(clamp(240px, 20vw, 300px), 1fr));
+        gap: var(--space-md);
+        margin-top: var(--space-2xl);
+    }
+    
+    /* Category Card */
+    .category-card {
+        background: linear-gradient(
+            160deg, 
+            rgba(255, 252, 250, 1), 
+            rgba(254, 248, 240, 1)
+        );
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-lg);
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-md) var(--space-sm);
+        box-shadow: var(--elevation-1);
+        transition: 
+            transform var(--duration-slow) var(--ease-bounce),
+            box-shadow var(--duration-normal) var(--ease-smooth),
+            border-color var(--duration-normal) var(--ease-smooth),
+            background var(--duration-normal) var(--ease-smooth);
+        text-decoration: none;
+        
+        /* Accessibility: Minimum touch target */
+        min-width: var(--touch-target-min);
+    }
+    
+    .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--elevation-2);
+        border-color: var(--color-border-accent);
+        background: linear-gradient(
+            160deg, 
+            rgba(255, 252, 250, 1), 
+            rgba(255, 245, 230, 1)
+        );
+    }
+    
+    .category-card:active {
+        transform: translateY(-4px);
+    }
+    
+    /* Category Title */
+    .category-title {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-style: italic;
+        font-weight: 600;
+        text-align: center;
+        line-height: 1.35;
+        color: var(--color-text-primary);
+        margin: 0;
+        transition: color var(--duration-normal) var(--ease-smooth);
+    }
+    
+    .category-card:hover .category-title {
+        color: var(--color-accent-primary);
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    
+    @media (max-width: 768px) {
+        .category-grid {
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--space-sm);
+        }
+        
+        .category-card {
+            min-height: 120px;
+        }
+        
+        .category-title {
+            font-size: var(--text-lg);
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .category-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
