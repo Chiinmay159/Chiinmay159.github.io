@@ -1,0 +1,241 @@
+<!-- ============================================
+     SECTION 7: FAQ
+     Copy-paste after Section 6 (NEP 2020)
+     ============================================ -->
+
+<div id="faq-section" class="bv-section bv-section--paper">
+    <div class="container">
+        
+        <!-- Section Header -->
+        <header class="section-header">
+            <span class="section-eyebrow">Common Queries</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </header>
+        
+        <!-- FAQ List -->
+        <div class="faq-list">
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>Is there a fixed schedule for BharatVidya.in's courses?</span>
+                    <svg class="faq-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        The courses are <strong>self-paced, on-demand</strong>, and offer <strong>lifetime access</strong>. 
+                        You can begin and complete the lectures anytime according to your convenience.
+                    </p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>Are the courses beginner-friendly?</span>
+                    <svg class="faq-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Yes. All courses are designed for learners of all levels—<strong>no prior background required</strong>. 
+                        You start from fundamentals and progress steadily.
+                    </p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>Are the courses compliant with NEP 2020?</span>
+                    <svg class="faq-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Yes. They are fully aligned with the <strong>National Education Policy (NEP 2020)</strong> 
+                        and eligible for IKS academic credits in partnering institutions.
+                    </p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>Are the lectures live?</span>
+                    <svg class="faq-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        All lectures are <strong>high-quality prerecorded videos</strong> available anytime on our 
+                        learning portal. You can rewatch any lecture whenever needed.
+                    </p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>Do I receive a certificate after completing a course?</span>
+                    <svg class="faq-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Yes. Every learner receives a <strong>verified certificate</strong> issued jointly by 
+                        <strong>BharatVidya & BORI</strong> upon successful completion of assessments.
+                    </p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>Can I access the courses on mobile?</span>
+                    <svg class="faq-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    <p>
+                        Yes. The platform is <strong>mobile and tablet-friendly</strong> for seamless viewing 
+                        on any device, via browser or app.
+                    </p>
+                </div>
+            </details>
+            
+        </div>
+        
+    </div>
+</div>
+
+<style>
+    /* ==========================================
+       SECTION 7: FAQ
+       ========================================== */
+    
+    .faq-list {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    /* FAQ Item */
+    .faq-item {
+        background: var(--color-bg-primary);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--elevation-1);
+        overflow: hidden;
+        transition: all var(--duration-normal) var(--ease-smooth);
+        scroll-margin-top: var(--space-xl);  /* For smooth scroll */
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-4px);
+        border-color: var(--color-border-accent);
+        box-shadow: var(--elevation-2);
+    }
+    
+    .faq-item[open] {
+        background: #FCF8F2;
+        border-color: var(--color-gold-300);
+        box-shadow: var(--elevation-2);
+    }
+    
+    /* Question (Summary) */
+    .faq-question {
+        padding: var(--space-lg);
+        font-size: var(--body-large);
+        font-weight: 600;
+        color: var(--color-text-primary);
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-md);
+        transition: color var(--duration-normal) var(--ease-smooth);
+        min-height: var(--touch-target-min);  /* Accessibility */
+    }
+    
+    .faq-question::-webkit-details-marker {
+        display: none;
+    }
+    
+    .faq-question:hover {
+        color: var(--color-accent-primary);
+    }
+    
+    /* Chevron Icon */
+    .faq-icon {
+        width: 20px;
+        height: 20px;
+        stroke: var(--color-gold-300);
+        flex-shrink: 0;
+        transition: transform var(--duration-normal) var(--ease-smooth);
+    }
+    
+    .faq-item[open] .faq-icon {
+        transform: rotate(180deg);
+    }
+    
+    /* Answer */
+    .faq-answer {
+        padding: 0 var(--space-lg) var(--space-lg);
+    }
+    
+    .faq-answer p {
+        margin: 0;
+        padding-left: var(--space-md);
+        border-left: 3px solid var(--color-gold-300);
+        font-size: var(--body);
+        line-height: 1.65;
+        color: var(--color-text-secondary);
+    }
+    
+    .faq-answer strong {
+        color: var(--color-text-primary);
+        font-weight: 600;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    
+    @media (max-width: 640px) {
+        .faq-question {
+            padding: var(--space-md);
+            font-size: var(--body);
+        }
+        
+        .faq-answer {
+            padding: 0 var(--space-md) var(--space-md);
+        }
+        
+        .faq-answer p {
+            padding-left: var(--space-sm);
+        }
+    }
+</style>
+
+<script>
+    // Smooth scroll to opened FAQ item (for mobile accessibility)
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            item.addEventListener('toggle', function(e) {
+                if (e.target.open) {
+                    setTimeout(() => {
+                        e.target.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'nearest' 
+                        });
+                    }, 150);
+                }
+            });
+        });
+    });
+</script>

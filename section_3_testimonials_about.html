@@ -1,0 +1,215 @@
+<!-- ============================================
+     SECTION 3: TESTIMONIALS & ABOUT
+     Copy-paste after Section 2 (Categories)
+     ============================================ -->
+
+<div id="testimonials-section" class="bv-section bv-section--paper">
+    <div class="container">
+        
+        <!-- Testimonials -->
+        <div class="testimonials-block">
+            <header class="section-header">
+                <span class="section-eyebrow">Voices of Leadership</span>
+                <h2 class="section-title">Testimonials</h2>
+            </header>
+            
+            <div class="testimonial-grid">
+                
+                <!-- Testimonial 1: PM Modi -->
+                <div class="testimonial-card card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/DDowFU6ScZk" 
+                            title="Prime Minister Shri Narendra Modi on the Mahabharata Course"
+                            allowfullscreen
+                            loading="lazy"
+                        ></iframe>
+                    </div>
+                    <div class="testimonial-caption">
+                        <p>Hon. Prime Minister Shri Narendra Modi on the Mahabharata Course by BORI.</p>
+                        <a href="https://www.bharatvidya.in/courses?categories_ids=11010" class="inline-cta">
+                            Explore Vedas, Epics and Puranas →
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2: Finance Minister -->
+                <div class="testimonial-card card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/-grvtNb1S-Q" 
+                            title="Finance Minister Smt. Nirmala Sitharaman Launches BharatVidya"
+                            allowfullscreen
+                            loading="lazy"
+                        ></iframe>
+                    </div>
+                    <div class="testimonial-caption">
+                        <p>Hon. Finance Minister Smt. Nirmala Sitharaman launches BharatVidya on 21.09.2022.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- About BharatVidya -->
+        <div class="about-block">
+            <div class="about-card card">
+                <header class="section-header">
+                    <span class="section-eyebrow">Our Mission</span>
+                    <h2 class="section-title">About BharatVidya</h2>
+                </header>
+                
+                <div class="about-content">
+                    <p class="about-text">
+                        <strong>BharatVidya.in</strong> offers structured and accessible courses on Indian history, 
+                        Sanskrit, Vedic literature, archaeology and Indian Knowledge Systems (IKS), designed by 
+                        scholars with decades of research experience.
+                    </p>
+                    
+                    <p class="about-text">
+                        Our mission is to make India's civilisational knowledge available to learners and institutions 
+                        through academically rigorous, accurate and easy-to-understand content aligned with NEP 2020.
+                    </p>
+                    
+                    <p class="about-partnership">
+                        BharatVidya is a joint initiative of the Bhandarkar Oriental Research Institute (Pune) 
+                        and Matra Media.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<style>
+    /* ==========================================
+       SECTION 3: TESTIMONIALS & ABOUT
+       ========================================== */
+    
+    .testimonials-block {
+        margin-bottom: var(--space-3xl);
+    }
+    
+    /* Testimonial Grid */
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: var(--space-xl);
+    }
+    
+    .testimonial-card {
+        display: flex;
+        flex-direction: column;
+        background: var(--color-bg-primary);
+    }
+    
+    /* Video Wrapper */
+    .video-wrapper {
+        aspect-ratio: 16/9;
+        background: #000;
+        border-bottom: 1px solid var(--color-border-subtle);
+        overflow: hidden;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    
+    .video-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+    
+    /* Caption */
+    .testimonial-caption {
+        padding: var(--space-lg);
+    }
+    
+    .testimonial-caption p {
+        font-size: var(--body);
+        line-height: 1.6;
+        color: var(--color-text-secondary);
+        margin: 0 0 var(--space-md);
+    }
+    
+    .inline-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-xs);
+        font-weight: 600;
+        color: var(--color-accent-primary);
+        text-decoration: none;
+        transition: all var(--duration-normal) var(--ease-smooth);
+        padding: var(--space-xs) 0;
+    }
+    
+    .inline-cta:hover {
+        gap: var(--space-sm);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+    
+    /* About Block */
+    .about-block {
+        margin-top: var(--space-3xl);
+    }
+    
+    .about-card {
+        padding: var(--space-2xl) var(--space-xl);
+        background: linear-gradient(
+            to bottom, 
+            var(--color-bg-primary), 
+            rgba(251, 247, 242, 1)
+        );
+    }
+    
+    .about-content {
+        max-width: var(--text-max-width);
+        margin: 0 auto;
+    }
+    
+    .about-text {
+        font-size: var(--body-large);
+        line-height: 1.65;
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-lg);
+    }
+    
+    .about-text strong {
+        color: var(--color-text-primary);
+        font-weight: 600;
+    }
+    
+    .about-partnership {
+        margin-top: var(--space-xl);
+        padding-top: var(--space-lg);
+        border-top: 1px solid var(--color-border-subtle);
+        font-size: var(--body);
+        color: var(--color-gold-300);
+        font-style: italic;
+        text-align: center;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    
+    @media (max-width: 900px) {
+        .testimonial-grid {
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+        }
+    }
+    
+    @media (max-width: 640px) {
+        .about-card {
+            padding: var(--space-xl) var(--space-md);
+        }
+        
+        .testimonial-caption {
+            padding: var(--space-md);
+        }
+        
+        .about-partnership {
+            text-align: left;
+        }
+    }
+</style>
