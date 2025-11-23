@@ -1,0 +1,464 @@
+<style>
+    /* ===== 2026 Ultra-Premium Category Grid ===== */
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+        --ink: #0a0a0a;
+        --ink-medium: #404040;
+        --ink-light: #737373;
+        --accent: #004249;
+        --accent-rgb: 0, 66, 73;
+        --surface: #fafafa;
+        --pure-white: #ffffff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--surface);
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .bv-band {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 4rem);
+        position: relative;
+    }
+
+    /* Animated gradient background */
+    .bv-band::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 60%;
+        background: radial-gradient(
+            ellipse at center,
+            rgba(var(--accent-rgb), 0.03) 0%,
+            transparent 70%
+        );
+        border-radius: 50%;
+        animation: breathe 8s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @keyframes breathe {
+        0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
+        50% { transform: translateX(-50%) scale(1.1); opacity: 0.6; }
+    }
+
+    .bv-header {
+        text-align: center;
+        margin-bottom: clamp(4rem, 8vw, 6rem);
+        position: relative;
+        z-index: 1;
+    }
+
+    .bv-header h1 {
+        font-size: clamp(2rem, 5.5vw, 5rem);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        color: var(--ink);
+        margin-bottom: 1.5rem;
+        font-feature-settings: 'ss01' on, 'cv05' on;
+    }
+
+    .bv-subtitle {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: var(--ink-light);
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        line-height: 1.6;
+    }
+
+    /* Grid System */
+    .bv-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: rgba(var(--accent-rgb), 0.06);
+        border: 1px solid rgba(var(--accent-rgb), 0.06);
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (max-width: 1100px) {
+        .bv-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .bv-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Category Cell */
+    .bv-category {
+        background: var(--pure-white);
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 1.2 / 1;
+        transition: background 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Hover background gradient */
+    .bv-category::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(var(--accent-rgb), 0.03) 0%,
+            rgba(var(--accent-rgb), 0.01) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .bv-category:hover::before {
+        opacity: 1;
+    }
+
+    /* Animated border accent */
+    .bv-category::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 2px solid rgba(var(--accent-rgb), 0.2);
+        opacity: 0;
+        transform: scale(0.95);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+    }
+
+    .bv-category:hover::after {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Link styling */
+    .bv-category a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        padding: clamp(2rem, 4vw, 3rem);
+        text-decoration: none;
+        color: var(--ink-medium);
+        position: relative;
+        transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .bv-category:hover a {
+        color: var(--accent);
+    }
+
+    /* Typography */
+    .category-title {
+        font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        position: relative;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        font-feature-settings: 'ss02' on;
+    }
+
+    .bv-category:hover .category-title {
+        transform: scale(1.05);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+    }
+
+    /* Magnetic corner indicator */
+    .corner-indicator {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        width: 32px;
+        height: 32px;
+        opacity: 0;
+        transform: translate(8px, 8px) rotate(-45deg);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+    }
+
+    .corner-indicator::before,
+    .corner-indicator::after {
+        content: '';
+        position: absolute;
+        background: rgba(var(--accent-rgb), 0.5);
+        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .corner-indicator::before {
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+    }
+
+    .corner-indicator::after {
+        width: 2px;
+        height: 100%;
+        right: 0;
+        top: 0;
+    }
+
+    .bv-category:hover .corner-indicator {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-45deg);
+    }
+
+    /* Cursor-following gradient (added via JS) */
+    .cursor-glow {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+            circle,
+            rgba(var(--accent-rgb), 0.08) 0%,
+            transparent 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+        mix-blend-mode: multiply;
+    }
+
+    .bv-category:hover .cursor-glow {
+        opacity: 1;
+    }
+
+    /* Micro-interaction: subtle scale */
+    .bv-category {
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                    background 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .bv-category:hover {
+        transform: scale(1.02);
+        z-index: 10;
+    }
+
+    .bv-category:active {
+        transform: scale(0.98);
+    }
+
+    /* Focus state for accessibility */
+    .bv-category a:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: -3px;
+    }
+
+    /* Number indicator - subtle minimalist touch */
+    .category-number {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: rgba(var(--accent-rgb), 0.3);
+        letter-spacing: 0.05em;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        font-feature-settings: 'tnum' on, 'lnum' on;
+    }
+
+    .bv-category:hover .category-number {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Entrance animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .bv-category {
+        animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    }
+
+    .bv-category:nth-child(1) { animation-delay: 0.05s; }
+    .bv-category:nth-child(2) { animation-delay: 0.1s; }
+    .bv-category:nth-child(3) { animation-delay: 0.15s; }
+    .bv-category:nth-child(4) { animation-delay: 0.2s; }
+    .bv-category:nth-child(5) { animation-delay: 0.25s; }
+    .bv-category:nth-child(6) { animation-delay: 0.3s; }
+    .bv-category:nth-child(7) { animation-delay: 0.35s; }
+    .bv-category:nth-child(8) { animation-delay: 0.4s; }
+
+    /* Ultra-subtle texture overlay */
+    .bv-category a::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.02) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.02) 3px
+            );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+
+    .bv-category:hover a::before {
+        opacity: 0.3;
+    }
+</style>
+
+<section class="bv-band" aria-label="Course Categories">
+    <div class="bv-header">
+        <h1>What would you like to explore?</h1>
+        <p class="bv-subtitle">Discover the rich tapestry of Indian knowledge traditions</p>
+    </div>
+
+    <div class="bv-grid">
+        <article class="bv-category">
+            <span class="category-number">01</span>
+            <div class="cursor-glow"></div>
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11010">
+                <span class="category-title">Vedas, Epics<br>and Puranas</span>
+            </a>
+            <div class="corner-indicator"></div>
+        </article>
+
+        <article class="bv-category">
+            <span class="category-number">02</span>
+            <div class="cursor-glow"></div>
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11024">
+                <span class="category-title">Indian Knowledge<br>Systems</span>
+            </a>
+            <div class="corner-indicator"></div>
+        </article>
+
+        <article class="bv-category">
+            <span class="category-number">03</span>
+            <div class="cursor-glow"></div>
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11009">
+                <span class="category-title">History and<br>Archeology</span>
+            </a>
+            <div class="corner-indicator"></div>
+        </article>
+
+        <article class="bv-category">
+            <span class="category-number">04</span>
+            <div class="cursor-glow"></div>
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11898">
+                <span class="category-title">Art, Architecture<br>and Culture</span>
+            </a>
+            <div class="corner-indicator"></div>
+        </article>
+
+        <article class="bv-category">
+            <span class="category-number">05</span>
+            <div class="cursor-glow"></div>
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11013">
+                <span class="category-title">Science, Mathematics<br>and Medicine</span>
+            </a>
+            <div class="corner-indicator"></div>
+        </article>
+
+        <article class="bv-category">
+            <span class="category-number">06</span>
+            <div class="cursor-glow"></div>
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11011">
+                <span class="category-title">Religions and<br>Philosophy</span>
+            </a>
+            <div class="corner-indicator"></div>
+        </article>
+
+        <article class="bv-category">
+            <span class="category-number">07</span>
+            <div class="corner-indicator"></div>
+            <div class="cursor-glow"></div>
+            <a href="https://www.bharatvidya.in/courses?categories_ids=13134">
+                <span class="category-title">Governance and<br>Leadership</span>
+            </a>
+            <div class="corner-indicator"></div>
+        </article>
+
+        <article class="bv-category">
+            <span class="category-number">08</span>
+            <div class="cursor-glow"></div>
+            <a href="https://www.bharatvidya.in/courses?categories_ids=11012">
+                <span class="category-title">Sanskrit Literature<br>and Linguistics</span>
+            </a>
+            <div class="corner-indicator"></div>
+        </article>
+    </div>
+</section>
+
+<script>
+// Cursor-following gradient effect
+document.querySelectorAll('.bv-category').forEach(category => {
+    const glow = category.querySelector('.cursor-glow');
+
+    category.addEventListener('mousemove', (e) => {
+        const rect = category.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        glow.style.left = `${x - 150}px`;
+        glow.style.top = `${y - 150}px`;
+    });
+
+    category.addEventListener('mouseleave', () => {
+        glow.style.opacity = '0';
+    });
+});
+
+// Magnetic effect on corner indicator
+document.querySelectorAll('.bv-category').forEach(category => {
+    const indicator = category.querySelector('.corner-indicator');
+
+    category.addEventListener('mousemove', (e) => {
+        const rect = category.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const deltaX = (x - centerX) / 20;
+        const deltaY = (y - centerY) / 20;
+
+        indicator.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(-45deg)`;
+    });
+
+    category.addEventListener('mouseleave', () => {
+        indicator.style.transform = 'translate(0, 0) rotate(-45deg)';
+    });
+});
+</script>
